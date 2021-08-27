@@ -1,0 +1,934 @@
+@mixin transition {
+	transition: $transition;
+}
+
+@mixin input($marginTB: 0px) {
+	padding: 10px;
+	margin: $marginTB 0px;
+	border: 1px solid $gray;
+	border-radius: 3px;
+	outline: none;
+	@include transition();
+
+	&:focus {
+		outline: none;
+		border: 1px solid $blue;
+	}
+
+	&::placeholder {
+		color: $gray-dark;
+		opacity: 0.9;
+		font: italic normal 600 0.8rem $font-family;
+	}
+}
+
+@mixin linkUnderline($lineColor) {
+	display: inline-block;
+	&:hover {
+		color: $lineColor;
+	}
+	&::after {
+		display: block;
+		content: "";
+		border-bottom: 1px solid $lineColor;
+		transform: scaleX(0);
+		@include transition();
+	}
+	&:hover::after {
+		transform: scaleX(1);
+		border-bottom: 1px solid $lineColor;
+	}
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
+$transition: all .3s ease-in-out;
+$blue-light: #E4EEFB;
+$blue: #3C5D70;
+$gray-light: #F0EFF0;
+$gray: #AAAAAA;
+$gray-dark: #333333;
+$green: #7DAD4A;
+$purple: #985797;
+$orange: #DA8C1D;
+$orange-light: #FFC000;
+$creme: #FDF9ED;
+$font-family: "Raleway",
+sans-serif;
+
+:root {
+	color: $gray-dark;
+	font-family: $font-family;
+	letter-spacing: 1px;
+}
+
+html,
+body,
+main {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	overflow-x: hidden;
+}
+
+.header {
+	position: relative;
+	padding-bottom: 200px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url("../assets/intro.png");
+		background-color: #ECF5FE;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		z-index: -1;
+		filter: opacity(0.9);
+	}
+
+	&-navbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 0;
+
+		&-hook {
+			max-width: 300px;
+			&-img {
+				width: 100px;
+			}
+		}
+
+		&-nav {
+			&-link {
+				margin-left: 30px;
+				padding: 15px 10px;
+				color: $blue;
+				background-color: transparent;
+				font: normal normal 700 1rem $font-family;
+				text-decoration: none;
+				@include transition;
+				border-radius: 5px;
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				&:hover {
+					background-color: white;
+				}
+			}
+		}
+	}
+
+	&-box {
+		width: 50%;
+		margin: 50px auto 0;
+		padding: 20px;
+		background-color: #{$blue}ee;
+		color: white;
+		text-align: center;
+
+		&-title {
+			font: normal small-caps 300 4rem $font-family;
+			margin-bottom: 0;
+
+			&::after {
+				content: "";
+				display: block;
+				width: 50%;
+				height: 2px;
+				margin: 20px auto;
+				background-color: white;
+			}
+		}
+
+		&-subtitle {
+			margin-top: 0;
+			font: normal normal 400 2rem $font-family;
+		}
+	}
+}
+
+.intro {
+	padding: 50px 0 300px;
+	background-image: url("../assets/vlna_vyhody.png");
+	background-position: bottom;
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&-insights {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		width: 30%;
+		border-right: 2px solid $gray;
+
+		&-insight {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 300px;
+			margin: 10px 0;
+			color: white;
+			border-radius: 5px;
+			z-index: 1;
+			@include transition;
+
+			&-heading {
+				margin: 0 auto;
+				padding: 10px 20px;
+				font: normal small-caps 500 1rem $font-family;
+			}
+
+			&-container {
+				position: relative;
+				padding: 10px;
+
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					z-index: -1;
+					background-color: black;
+					filter: opacity(0.2);
+					border-radius: 0 5px 5px 0;
+				}
+
+				&-icon {
+					font-size: 1.5rem;
+				}
+			}
+
+			&:nth-child(1) {
+				background-color: #4E778B;
+			}
+
+			&:nth-child(2) {
+				background-color: #DA8C1D;
+			}
+
+			&:nth-child(3) {
+				background-color: #985797;
+			}
+
+			&.active {
+				transform: translateX(20px);
+			}
+		}
+	}
+
+	&-text {
+		width: 30%;
+	}
+
+	&-img {
+		width: 300px;
+		height: auto;
+	}
+
+	&.i-0 {
+		.intro-insights-insight.e-0 {
+			transform: translateX(15px);
+		}
+	}
+
+	&.i-1 {
+		.intro-insights-insight.e-1 {
+			transform: translateX(15px);
+		}
+	}
+
+	&.i-2 {
+		.intro-insights-insight.e-2 {
+			transform: translateX(15px);
+		}
+	}
+}
+
+.ceo {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 100px;
+
+	&-figure {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+
+		&-img {
+			width: auto;
+		}
+
+		&-text {
+			position: relative;
+			width: 35%;
+			margin-left: 30px;
+			text-align: left;
+
+			&-quote {
+				margin: 0;
+				margin-bottom: 20px;
+				font: normal small-caps 600 1.4rem $font-family;
+			}
+
+			&-subquote {
+				margin: 0;
+				margin-bottom: 20px;
+				font: normal normal 500 1rem $font-family;
+			}
+
+			&-author {
+				display: flex;
+				flex-direction: column;
+				font: normal normal 400 0.9rem $font-family;
+				line-height: 1.6rem;
+
+				&-name {
+					font-weight: 600;
+				}
+
+				&-link {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					width: 100%;
+					margin-top: 100px;
+					color: $gray-dark;
+					border: 1px solid $blue;
+					border-radius: 5px;
+					z-index: 1;
+					text-decoration: none;
+					background-color: $gray-light;
+					@include transition;
+
+					&-text {
+						margin: 0 auto;
+						padding: 10px 20px;
+						font: normal small-caps 500 1.2rem $font-family;
+						@include transition;
+					}
+
+					&-icon {
+						box-sizing: content-box;
+						padding: 15px;
+						color: white;
+						background-color: $blue;
+						@include transition;
+					}
+
+					&:hover &-text {
+						color: $blue;
+					}
+				}
+			}
+
+			&-quotes {
+				position: absolute;
+				top: -1rem;
+				right: -2rem;
+				font-size: 2rem;
+				color: $blue;
+			}
+		}
+	}
+}
+
+.numbers {
+	padding: 50px 0 30px;
+	background-color: $creme;
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&-item {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 15%;
+		text-align: center;
+
+		&:nth-child(1) &-number-numeral {
+			background-color: $green;
+		}
+
+		&:nth-child(2) &-number-numeral {
+			background-color: $blue;
+		}
+
+		&:nth-child(3) &-number-numeral {
+			background-color: $purple;
+		}
+
+		&:nth-child(4) &-number-numeral {
+			background-color: $orange;
+		}
+
+		&-number {
+			margin-bottom: 10px;
+
+			&-numeral {
+				margin: 5px;
+				padding: 10px;
+				color: white;
+				font: normal normal 500 2rem $font-family;
+				border-radius: 3px;
+
+				&:first-child {
+					margin-left: 0;
+				}
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+
+		&-description {
+			margin-top: 20px;
+			font: normal normal 500 1.2rem $font-family;
+		}
+	}
+}
+
+.brokers {
+	padding: 80px 0;
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	&-heading {
+		margin-bottom: 30px;
+	}
+	&-box {
+		position: relative;
+		width: 50%;
+		border-bottom: 1px solid $gray-light;
+		&-indicators {
+			bottom: -50px;
+			position: absolute;
+			margin-bottom: 0;
+			&-indicator {
+				display: block;
+				opacity: 1 !important;
+				height: 1rem !important;
+				width: 1rem !important;
+				padding: 5px !important;
+				border: 1px solid $blue !important;
+				background-clip: content-box !important;
+				border-radius: 1.2rem;
+				&.active {
+					background-color: $blue;
+				}
+			}
+		}
+		&-items {
+			&-item {
+				background-color: $blue-light;
+				&.active, &.carousel-item-start, &.carousel-item-end {
+					display: flex;
+					justify-content: space-between;
+					align-items: stretch;
+				}
+				&-figcaption {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-evenly;
+					width: 50%;
+					padding: 20px;
+					&-quote {
+						font: normal small-caps 500 1.4rem $font-family;
+						margin-bottom: 10px;
+						&::before {
+							content: "";
+						}
+						&::after {
+							content: "";
+						}
+					}
+					&-para {
+						font: normal normal 500 1rem $font-family;
+					}
+					&-name {
+						display: block;
+						font: normal small-caps 600 1.8rem $font-family;
+					}
+					&-office {
+						display: block;
+						font: normal small-caps 500 1.2rem $font-family;
+					}
+				}
+				&-img {
+					width: 50%;
+				}
+			}
+		}
+		&-control {
+			position: absolute;
+			&-prev {
+
+			}
+			&-next {
+			}
+		}
+	}
+}
+
+.info {
+	padding: 150px 0 50px;
+	background-image: url("../assets/vlna_info.png");
+	background-position: top;
+	.container {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: stretch;
+	}
+	&-text {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		width: 50%;
+		color: white;
+		&-heading {
+			font: normal small-caps 500 1.8rem $font-family;
+			letter-spacing: 3px;
+		}
+		&-form {
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+			flex-wrap: wrap;
+			&-tel {
+				@include input();
+				margin-bottom: 20px;
+				width: 100%;
+			}
+			&-submit {
+				width: 20%;
+				padding: 10px;
+				text-decoration: none;
+				color: white;
+				border-radius: 3px;
+				@include transition();
+
+				&.disabled {
+					background-color: $gray;
+					border: 1px solid $gray;
+				}
+
+				&.enabled {
+					background-color: $green;
+					border: 1px solid $green;
+				}
+			}
+			&-consent {
+				width: 75%;
+			}
+		}
+	}
+	&-icon {
+		width: 30%;
+		&-img {
+			width: 100%;
+		}
+	}
+}
+
+.partners {
+	padding: 50px 0;
+	&-heading {
+		text-align: center;
+	}
+
+	&-list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+
+		&-item {
+			margin: 20px auto;
+			height: auto;
+			max-height: 150px;
+			width: 17%;
+		}
+	}
+}
+
+.transfer {
+	background-image: url("../assets/vlna_prepis.png");
+	background-position: bottom;
+	background-repeat: repeat-x;
+	padding: 100px 0 200px;
+
+	&-header {
+		text-align: center;
+		padding-bottom: 50px;
+		border-bottom: 1px solid $blue;
+
+		&-heading {
+			font: normal normal 500 1.8rem $font-family;
+		}
+
+		&-description {
+			width: 80%;
+			margin: 10px auto;
+
+			&-arrow {
+				position: relative;
+				color: $blue;
+				font-size: 1.2rem;
+				top: 2px;
+			}
+		}
+	}
+
+	&-people {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding-top: 50px;
+
+		&-person {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			flex-wrap: wrap;
+			width: 30%;
+
+			&-img {
+				width: 30%;
+			}
+
+			&-info {
+				width: 30%;
+				margin-left: 20px;
+
+				&-title {
+					font: normal small-caps 500 1.6rem $font-family;
+				}
+
+				&-subtitle {
+					font: normal normal 400 1rem $font-family;
+				}
+			}
+
+			&-list {
+				margin-top: 20px;
+				width: 100%;
+
+				&-item {
+					&-marker {
+						position: relative;
+						top: -2px;
+						color: $blue;
+						font-size: 1.2rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+.portal {
+	padding: 50px;
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&-info {
+		width: 50%;
+
+		&-heading {
+			font: normal small-caps 500 1.8rem $font-family;
+		}
+		&-para {
+			width: 80%;
+		}
+		&-subheading {
+			font: normal small-caps 500 1.4rem $font-family;
+		}
+		&-list {
+			&-item {
+				margin-top: 16px;
+			}
+		}
+		&-form {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			background-color: $orange-light;
+			border-radius: 10px;
+			padding: 30px 50px;
+			&-heading {
+				width: 100%;
+				font: normal small-caps 500 1.6rem $font-family
+			}
+			&-name {
+				@include input(10px);
+				width: 48%;
+			}
+			&-surname {
+				@include input(10px);
+				width: 48%;
+			}
+			&-email {
+				@include input(10px);
+				width: 100%;
+			}
+			&-tel {
+				@include input(10px);
+				width: 100%;
+			}
+			&-username {
+				@include input(10px);
+				width: 100%;
+			}
+			&-submit {
+				@include input(10px);
+				background-color: $blue;
+				color: white;
+				border: none;
+				width: 100%;
+				&:hover {
+					filter: brightness(0.9);
+				}
+			}
+			&-login {
+				width: 50%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 10px 0;
+				font: normal normal 600 1rem $font-family;
+				&-link {
+					text-decoration: none;
+					color: $blue;
+					@include transition();
+					@include linkUnderline($blue);
+				}
+			}
+			&-disclaimer {
+				&-link {
+					text-decoration: none;
+					color: $blue;
+					@include transition();
+					@include linkUnderline($blue);
+				}
+			}
+		}
+	}
+	&-images {
+		width: 40%;
+		&-figure {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: #{$blue}aa;
+			color: white;
+			border-radius: 10px;
+			overflow: hidden;
+			&-img {
+				height: 250px;
+				width: 100%;
+				object-fit: cover;
+			}
+			&-description {
+				padding: 14px;
+			}
+			&:nth-child(1) {
+				left: -200px;
+			}
+			&:nth-child(2) {
+			}
+			&:nth-child(3) {
+				left: -100px;
+			}
+		}
+	}
+}
+
+.example {
+	background-color: $gray-light;
+	padding: 30px;
+
+	.container {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+
+	&-text {
+		width: 50%;
+
+		&-heading {}
+
+		&-para {}
+
+		&-form {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin: 20px 0;
+
+			&-email {
+				width: 80%;
+				@include input();
+			}
+
+			&-submit {
+				width: 15%;
+				padding: 10px;
+				text-decoration: none;
+				color: white;
+				border-radius: 3px;
+				@include transition();
+
+				&.disabled {
+					background-color: $gray;
+					border: 1px solid $gray;
+				}
+
+				&.enabled {
+					background-color: $purple;
+					border: 1px solid $purple;
+				}
+			}
+		}
+		&-privacypolicy {
+			font: normal normal 300 0.7rem $font-family;
+		}
+	}
+
+	&-img {
+		width: 30%;
+	}
+}
+
+.support {
+	padding-top: 50px;
+	.container {
+		display: flex;
+		justify-content: space-between;
+	}
+	&-text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		width: 60%;
+		&-heading {
+			font: normal small-caps 500 1.8rem $font-family;
+		}
+		&-para {
+			width: 60%;
+		}
+		&-cite {
+			align-self: flex-end;
+			font: normal normal 400 1rem $font-family;
+			&-name {
+				display: block;
+				margin-bottom: 5px;
+			}
+		}
+		&-blockquote {
+			width: 50%;
+			font: normal small-caps 600 1.6rem $font-family;
+			position: relative;
+			align-self: flex-end;
+			margin-top: 50px;
+			&-quotes {
+				position: absolute;
+				top: -1rem;
+				right: -2rem;
+				font-size: 2rem;
+				color: $blue;
+			}
+		}
+	}
+	&-img {
+		width: 30%;
+	}
+}
+
+.footer {
+	padding: 200px 0 50px;
+	background-image: url("../assets/vlna_kontakt.png");
+	background-position: top;
+	color: white;
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&-contact {
+		width: 50%;
+		padding-right: 50px;
+		border-right: 1px solid white;
+		&-heading {
+			font: normal small-caps 500 1.6rem $font-family;
+		}
+		&-info {
+			&-item {
+				&-tel {
+					padding-right: 10px;
+					border-right: 1px solid white;
+					color: white;
+					text-decoration: none;
+					@include transition();
+					&:hover {
+						color: $blue-light;
+					}
+				}
+				&-date {
+					margin-left: 10px;
+					margin-right: 10px;
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+	&-location {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 50%;
+		padding-left: 50px;
+		&-column {
+			width: 50%;
+		}
+		&-email {
+			color: white;
+			text-decoration: none;
+			@include transition();
+
+			&:hover {
+				color: $blue-light;
+			}
+		}
+	}
+}

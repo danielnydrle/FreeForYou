@@ -1,0 +1,102 @@
+var introPosition = 0;
+
+// elements
+const introElement = document.querySelector(".intro");
+const introInsightsElement = document.querySelector(".intro-insights");
+const introInsightsList = document.querySelectorAll(".intro-insights-insight");
+const introText = document.querySelector(".intro-text");
+const introImg = document.querySelector(".intro-img");
+const introTexts = [
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur arcu. Duis ultrices aliquam mauris sed pretium. Maecenas libero. ",
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius et nulla at aliquam. Suspendisse potenti. Sed fringilla neque id.  ",
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies vulputate ligula, ac placerat lectus placerat ut. Curabitur at sem. "
+];
+
+const ceoImg = document.querySelector(".ceo-figure-img");
+const ceoText = document.querySelector(".ceo-figure-text");
+
+const numbersData = document.querySelectorAll(".numbers-item-number");
+
+const infoSubmitButton = document.querySelector(".info-text-form-submit");
+
+const exampleSubmitButton = document.querySelector(".example-text-form-submit");
+
+window.onload = () => {
+	introChange();
+	ceoImg.style.height = `${ceoText.offsetHeight}px`;
+	sliceNumerals();
+	validateEmail();
+}
+
+introInsightsList.forEach(e => {
+	e.addEventListener("click", (e) => {
+		introChange(e.target);
+		console.log(e.target.className.match(/e-\d/))
+	})
+})
+
+const introChange = (e) => {
+	let introHeading;
+	let index;
+
+	if (e === undefined) {
+		introElement.classList.add(`i-${introPosition}`);
+	}
+	else {
+		index = e.className.match(/e-\d/)[0].substr(-1);
+		introElement.classList.remove(`i-${introPosition}`);
+		introPosition = index;
+		introElement.classList.add(`i-${index}`);
+	}
+
+	introImg.removeAttribute("src");
+
+	let imageFileName;
+	let imagePath;
+	introHeading = introInsightsElement.children[introPosition].innerText;
+	imageFileName = introHeading.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "")
+		.replaceAll(" ", "-")
+		.toLowerCase();
+	imageFileName = `${imageFileName}.svg`;
+	imagePath = `../assets/${imageFileName}`;
+
+	introImg.setAttribute("src", imagePath)
+	introImg.setAttribute("alt", introHeading)
+
+	introText.innerText = introTexts[introPosition];
+
+}
+
+const sliceNumerals = () => {
+	let letterize = new Letterize({
+		targets: ".numbers-item-number",
+		className: "numbers-item-number-numeral"
+	})
+}
+
+const validateTel = () => {
+	const rgx = /^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/;
+	let tel = document.querySelector(".info-text-form-tel").value;
+	let valid = rgx.test(tel);
+	if (valid && !infoSubmitButton.classList.contains("enabled")) {
+		infoSubmitButton.classList.replace("disabled", "enabled");
+		infoSubmitButton.disabled = false;
+	} else if (!valid && infoSubmitButton.classList.contains("enabled")) {
+		infoSubmitButton.classList.replace("enabled", "disabled");
+		infoSubmitButton.disabled = true;
+	}
+}
+
+const validateEmail = () => {
+	const rgx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	let email = document.querySelector(".example-text-form-email").value;
+	let valid = rgx.test(email);
+	if (valid && !exampleSubmitButton.classList.contains("enabled")) {
+		exampleSubmitButton.classList.replace("disabled", "enabled");
+		exampleSubmitButton.disabled = false;
+	} else if (!valid && exampleSubmitButton.classList.contains("enabled")) {
+		exampleSubmitButton.classList.replace("enabled", "disabled");
+		exampleSubmitButton.disabled = true;
+	}
+}
