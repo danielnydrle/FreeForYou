@@ -20,6 +20,21 @@ main {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.compensate-for-scrollbar {
+  padding-right: 0 !important;
+}
+
+.modal-open {
+  overflow: hidden;
+  padding-right: 0 !important;
+}
+.modal-open header,
+.modal-open main,
+.modal-open footer {
+  filter: blur(10px);
 }
 
 .header {
@@ -312,6 +327,7 @@ main {
 
 .brokers {
   padding: 80px 0;
+  scroll-margin-top: -40px;
 }
 .brokers .container {
   display: flex;
@@ -585,6 +601,8 @@ main {
   flex-wrap: wrap;
   background-color: #FFC000;
   border-radius: 10px;
+  margin-top: 40px;
+  scroll-margin-top: 40px;
   padding: 30px 50px;
 }
 .portal-info-form-heading {
@@ -765,6 +783,8 @@ main {
   color: white;
   border-radius: 10px;
   overflow: hidden;
+  text-decoration: none;
+  margin: 20px 0;
 }
 .portal-images-figure-img {
   height: 250px;
@@ -779,6 +799,9 @@ main {
 }
 .portal-images-figure:nth-child(3) {
   left: -100px;
+}
+.portal-images-figure:hover {
+  color: white;
 }
 .portal-box {
   display: none;
@@ -982,6 +1005,76 @@ main {
   color: #E4EEFB;
 }
 
+.modal {
+  padding-right: 0 !important;
+}
+.modal-dialog {
+  max-width: 100% !important;
+  width: 70%;
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: white;
+  background-color: #3C5D70;
+  padding: 30px 50px;
+  border-radius: 10px !important;
+}
+.modal-header {
+  font: normal small-caps 500 1.8rem "Raleway", sans-serif;
+  border-bottom: none;
+}
+.modal-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0;
+}
+.modal-body-img {
+  width: 40%;
+}
+.modal-body-features {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  width: 110%;
+}
+.modal-body-features-feature {
+  font: normal small-caps 500 1.2rem "Raleway", sans-serif;
+}
+.modal-body-features-feature:nth-child(1) {
+  padding-right: 10px;
+  border-right: 2px solid white;
+}
+.modal-body-features-feature:nth-child(2) {
+  padding: 0px 10px;
+}
+.modal-body-features-feature:nth-child(3) {
+  padding-left: 10px;
+  border-left: 2px solid white;
+}
+.modal-footer {
+  padding-top: 0;
+  border-top: none;
+}
+.modal-footer-button {
+  padding: 20px;
+  background-color: #7DAD4A;
+  text-decoration: none;
+  overflow: none;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font: normal small-caps 500 1.8rem "Raleway", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+.modal-footer-button:hover {
+  filter: brightness(0.9);
+}
+
 @media screen and (max-width: 1400px) {
   .header-box-title {
     font: normal normal 400 3.2rem "Raleway", sans-serif;
@@ -1146,6 +1239,7 @@ main {
 
   .brokers {
     padding: 50px 0;
+    scroll-margin-top: -20px;
   }
   .brokers .container {
     max-width: 90%;

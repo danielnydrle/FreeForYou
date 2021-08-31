@@ -1,4 +1,4 @@
-var introPosition = 0;
+var introPosition = 1;
 let temp;
 
 // elements
@@ -9,7 +9,7 @@ const introText = document.querySelector(".intro-text");
 const introImg = document.querySelector(".intro-img");
 const introTexts = [
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur arcu. Duis ultrices aliquam mauris sed pretium. Maecenas libero. ",
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius et nulla at aliquam. Suspendisse potenti. Sed fringilla neque id.  ",
+	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius et nulla at aliquam. Suspendisse potenti. Sed fringilla neque id. ",
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies vulputate ligula, ac placerat lectus placerat ut. Curabitur at sem. "
 ];
 
@@ -26,16 +26,22 @@ const portalInfo = document.querySelector(".portal-info");
 const portalSubheading = document.querySelector(".portal-info-subheading");
 const portalForm = document.querySelector(".portal-info-form");
 const portalCarousel = document.querySelector(".portal-box");
+const portalFigures = document.querySelectorAll(".portal-images-figure");
 
 const infoSubmitButton = document.querySelector(".info-text-form-submit");
 
 const exampleSubmitButton = document.querySelector(".example-text-form-submit");
+
+const modal = document.querySelector(".modal");
+const modalBS = new bootstrap.Modal(modal);
 
 window.onload = () => {
 	introChange();
 	manipulateElements();
 	sliceNumerals();
 	validateEmail();
+	loadCaptions();
+	showModal();
 }
 
 window.onresize = () => {
@@ -54,8 +60,7 @@ const introChange = (e) => {
 
 	if (e === undefined) {
 		introElement.classList.add(`i-${introPosition}`);
-	}
-	else {
+	} else {
 		index = e.className.match(/e-\d/)[0].substr(-1);
 		introElement.classList.remove(`i-${introPosition}`);
 		introPosition = index;
@@ -72,7 +77,7 @@ const introChange = (e) => {
 		.replaceAll(" ", "-")
 		.toLowerCase();
 	imageFileName = `${imageFileName}.svg`;
-	imagePath = `../assets/${imageFileName}`;
+	imagePath = `./assets/${imageFileName}`;
 
 	introImg.setAttribute("src", imagePath)
 	introImg.setAttribute("alt", introHeading)
@@ -123,7 +128,6 @@ const manipulateElements = () => {
 	}
 	if (window.innerWidth > 992) {
 		ceoImg.style.height = `${ceoText.offsetHeight}px`;
-		temp = document.querySelector(".brokers");
 	} else {
 		ceoImg.style.removeProperty("height");
 		ceoFigure.appendChild(ceoButton);
@@ -138,4 +142,19 @@ const manipulateElements = () => {
 	} else {
 		portalCarousel.style.width = `${portalForm.offsetWidth + 35}px`;
 	}
+}
+
+const loadCaptions = () => {
+	portalFigures.forEach(e => {
+		temp = e.children[1];
+		e.setAttribute("data-caption", temp.innerText);
+	})
+}
+
+const showModal = () => {
+	modalBS.show();
+}
+
+const hideModal = () => {
+	modalBS.hide();
 }

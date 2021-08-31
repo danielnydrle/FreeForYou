@@ -4,21 +4,22 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-beta.4/dist/fancybox.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./styles/style.css">
 	<link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
 	<title>Free For You | Služby pro realitní makléře</title>
 </head>
-<body>
+<body class="modal-open">
 	<header class="header">
 		<div class="header-navbar container">
 			<a href="#" class="header-navbar-hook">
 				<img src="./assets/ffy_logo.png" alt="Free For You" class="header-navbar-hook-img">
 			</a>
 			<nav class="header-navbar-nav">
-				<a href="#" class="header-navbar-nav-link">Reference</a>
-				<a href="#" class="header-navbar-nav-link">Registrace</a>
-				<a href="#" class="header-navbar-nav-link">Kontakt</a>
+				<a href="#brokers" class="header-navbar-nav-link">Reference</a>
+				<a href="#signup" class="header-navbar-nav-link">Registrace</a>
+				<a href="#contact" class="header-navbar-nav-link">Kontakt</a>
 			</nav>
 		</div>
 		<div class="header-box">
@@ -89,7 +90,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="brokers">
+		<section class="brokers" id="brokers">
 			<div class="container">
 				<h2 class="brokers-heading">REALITNÍ MAKLÉŘI VYUŽÍVAJÍCÍ PŘEVOD ENERGIÍ OD FREE&nbsp;FOR&nbsp;YOU</h2>
 				<div class="brokers-box carousel slide" data-bs-ride="carousel">
@@ -353,7 +354,7 @@
 						<li class="portal-info-list-item"><span class="fas fa-chevron-right fa-fw fa-li transfer-people-person-list-item-marker"></span>Jednoduché zadávání nových klientů</li>
 						<li class="portal-info-list-item"><span class="fas fa-chevron-right fa-fw fa-li transfer-people-person-list-item-marker"></span>Zdarma a bez závazků</li>
 					</ul>
-					<form action="" class="portal-info-form">
+					<form action="" class="portal-info-form" id="signup">
 						<h3 class="portal-info-form-heading">VYTVOŘENÍ ÚČTU</h3>
 						<input type="text" name="form-name" id="form-name" class="portal-info-form-name" placeholder="Jméno">
 						<input type="text" name="form-surname" id="form-surname" class="portal-info-form-surname" placeholder="Příjmení">
@@ -369,18 +370,18 @@
 					</form>
 				</div>
 				<div class="portal-images">
-					<figure class="portal-images-figure">
+					<a href="https://via.placeholder.com/400x400" class="portal-images-figure" data-fancybox="portal">
 						<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img" loading="lazy">
 						<span class="portal-images-figure-description">V portálu najdete všechno potřebné od smluv po plnou moc.</span>
-					</figure>
-					<figure class="portal-images-figure">
+					</a>
+					<a href="https://via.placeholder.com/400x400" class="portal-images-figure" data-fancybox="portal">
 						<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img" loading="lazy">
 						<span class="portal-images-figure-description">V portálu najdete všechno potřebné od smluv po plnou moc.</span>
-					</figure>
-					<figure class="portal-images-figure">
+					</a>
+					<a href="https://via.placeholder.com/400x400" class="portal-images-figure" data-fancybox="portal">
 						<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img" loading="lazy">
 						<span class="portal-images-figure-description">V portálu najdete všechno potřebné od smluv po plnou moc.</span>
-					</figure>
+					</a>
 				</div>
 				
 			</div>
@@ -418,7 +419,7 @@
 	<footer class="footer">
 		<div class="container">
 			<img src="./assets/telemarketer.png" class="footer-img" />
-			<div class="footer-contact">
+			<div class="footer-contact" id="contact">
 				<h2 class="footer-contact-heading">KONTAKT</h2>
 				<p class="footer-contact-para">Máte otázky k fungování přepisu energií Free For You? Ozvěte se nám, rádi s vámi projdeme jednotlivé kroky registrace, zodpovíme vaše dotazy nebo podrobně vysvětlíme provizorní systém.</p>
 				<div class="footer-contact-info">
@@ -440,6 +441,25 @@
 		</div>
 	</footer>
 
+	<div class="modal fade" data-bs-backdrop="static">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title">NEJÚSPĚŠNĚJŠÍ MAKLÉŘI S NÁMI POVYŠUJÍ SLUŽBY NA NOVOU ÚROVEŇ</h1>
+					
+				</div>
+				<div class="modal-body">
+					<img src="./assets/podpis.svg" alt="Lukáš Zach" class="modal-body-img">
+					<div class="modal-body-features"><span class="modal-body-features-feature">NIŽŠÍ ADMINISTRATIVA</span><span class="modal-body-features-feature">ÚSPORA PRO KLIENTA</span><span class="modal-body-features-feature">PRAVIDELNÝ PŘÍJEM</span></div>
+				</div>
+				<div class="modal-footer">
+					<button class="modal-footer-button" onclick="hideModal()">CHCI VĚDĚT VÍC</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-beta.4/dist/fancybox.umd.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="./scripts/letterize.min.js"></script>
 	<script src="./scripts/script.js"></script>
