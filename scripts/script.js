@@ -35,10 +35,11 @@ const exampleSubmitButton = document.querySelector(".example-text-form-submit");
 const modal = document.querySelector(".modal");
 const modalBS = new bootstrap.Modal(modal);
 
+var letterize;
+
 window.onload = () => {
 	introChange();
 	manipulateElements();
-	sliceNumerals();
 	validateEmail();
 	loadCaptions();
 	showModal();
@@ -86,12 +87,40 @@ const introChange = (e) => {
 
 }
 
-const sliceNumerals = () => {
-	let letterize = new Letterize({
-		targets: ".numbers-item-number",
-		className: "numbers-item-number-numeral"
-	})
-}
+$('.counting').each(function () {
+	var $this = $(this),
+		countTo = $this.attr('data-count');
+	$({
+		countNum: $this.text()
+	}).animate({
+			countNum: countTo
+		},
+		{
+			duration: 3000,
+			easing: 'linear',
+			step: function () {
+				if (letterize != undefined) {
+					letterize.deletterize();
+				}
+				$this.text(Math.floor(this.countNum));
+				letterize = new Letterize({
+					targets: ".numbers-item-number",
+					className: "numbers-item-number-numeral"
+				})
+
+			},
+			complete: function () {
+				$this.text(this.countNum);
+				letterize.deletterize();
+				letterize = new Letterize({
+					targets: ".numbers-item-number",
+					className: "numbers-item-number-numeral"
+				})
+			}
+
+		});
+});
+
 
 const validateTel = () => {
 	const rgx = /^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/;
