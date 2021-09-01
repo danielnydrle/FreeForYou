@@ -1,7 +1,10 @@
 var introPosition = 1;
+var isModalVisible;
 let temp;
 
 // elements
+const html = document.querySelector("html");
+
 const introElement = document.querySelector(".intro");
 const introInsightsElement = document.querySelector(".intro-insights");
 const introInsightsList = document.querySelectorAll(".intro-insights-insight");
@@ -18,6 +21,7 @@ const ceoImg = document.querySelector(".ceo-figure-img");
 const ceoText = document.querySelector(".ceo-figure-text");
 const ceoButton = document.querySelector(".ceo-figure-text-author-link");
 
+const numbers = document.querySelector(".numbers");
 const numbersData = document.querySelectorAll(".numbers-item-number");
 
 const brokersElement = document.querySelector(".brokers");
@@ -43,6 +47,7 @@ window.onload = () => {
 	validateEmail();
 	loadCaptions();
 	showModal();
+	numbersInView();
 }
 
 window.onresize = () => {
@@ -87,15 +92,15 @@ const introChange = (e) => {
 
 }
 
-$('.counting').each(function () {
-	var $this = $(this),
-		countTo = $this.attr('data-count');
-	$({
-		countNum: $this.text()
-	}).animate({
+const animateNumbers = () => {
+	$('.counting').each(function () {
+		var $this = $(this),
+			countTo = $this.attr('data-count');
+		$({
+			countNum: $this.text()
+		}).animate({
 			countNum: countTo
-		},
-		{
+		}, {
 			duration: 3000,
 			easing: 'linear',
 			step: function () {
@@ -119,8 +124,23 @@ $('.counting').each(function () {
 			}
 
 		});
-});
+	});
+}
 
+const numbersInView = () => {
+	if (numbers.getBoundingClientRect().top <= window.innerHeight && !isModalVisible) {
+		numbersData.forEach(e => {
+			e.style.display = "block";
+		})
+		animateNumbers();
+	} else {
+		numbersData.forEach(e => {
+			e.style.display = "none";
+		})
+	}
+}
+
+document.addEventListener("scroll", numbersInView);
 
 const validateTel = () => {
 	const rgx = /^(\+420)? ?[1-9][0-9]{2} ?[0-9]{3} ?[0-9]{3}$/;
@@ -182,8 +202,13 @@ const loadCaptions = () => {
 
 const showModal = () => {
 	modalBS.show();
+	isModalVisible = true;
+	html.style.overflowY = "hidden";
 }
 
 const hideModal = () => {
 	modalBS.hide();
+	isModalVisible = false;
+	html.style.overflowY = "scroll";
+	numbersInView();
 }
