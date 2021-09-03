@@ -1019,7 +1019,7 @@ main {
 		position: absolute;
 		bottom: 100px;
 		right: 0;
-		width: 30%;
+		width: 25%;
 		z-index: -1;
 	}
 
@@ -1223,7 +1223,7 @@ main {
 
 	.footer {
 		&-img {
-			width: 35%;
+			width: 30%;
 			bottom: 150px;
 		}
 	}
@@ -1859,7 +1859,7 @@ main {
 
 	.footer {
 		&-img {
-			width: 50%;
+			width: 45%;
 			bottom: 300px;
 			right: 0;
 		}
@@ -2154,7 +2154,7 @@ main {
 		&-text {
 			&-blockquote {
 				order: 4;
-				width: 80%;
+				width: 50%;
 
 			}
 
@@ -2173,7 +2173,7 @@ main {
 		}
 
 		&-img {
-			width: 40%;
+			width: 45%;
 		}
 
 		&-location {
@@ -2221,9 +2221,11 @@ main {
 		}
 	}
 
-	.footer {
-		&-img {
-			width: 50%;
+	.support {
+		&-text {
+			&-blockquote {
+				width: 70%;
+			}
 		}
 	}
 }
@@ -2251,7 +2253,7 @@ main {
 
 	.footer {
 		&-img {
-			width: 60%;
+			width: 55%;
 		}
 	}
 
