@@ -1012,7 +1012,7 @@ main {
 		position: relative;
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: stretch;
 	}
 
 	&-img {
@@ -1062,12 +1062,16 @@ main {
 	&-location {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: stretch;
+		align-self: center;
 		width: 50%;
 		padding-left: 50px;
 
 		&-column {
 			width: 50%;
+			&-map {
+				height: 120%;
+			}
 		}
 
 		&-email {
@@ -1606,6 +1610,12 @@ main {
 			width: 100%;
 			padding-left: 0;
 			margin-top: 20px;
+			text-align: right;
+			&-column {
+				&:first-of-type {
+					padding-right: 30px;
+				}
+			}
 		}
 	}
 
@@ -2167,20 +2177,30 @@ main {
 	}
 
 	.footer {
+		background-size: cover;
 		.container {
 			width: 100%;
-			padding: 0 15px;
+			padding: 30px 15px 0;
 		}
 
 		&-img {
-			width: 45%;
+			width: 50%;
+			bottom: 370px;
 		}
 
 		&-location {
 			flex-direction: column;
 
 			&-column {
+				text-align: center;
 				width: 100%;
+				padding: 0 !important;
+				&:first-of-type {
+					margin-bottom: 20px;
+				}
+				&-map {
+					height: 150px;
+				}
 			}
 		}
 	}
@@ -2224,8 +2244,18 @@ main {
 	.support {
 		&-text {
 			&-blockquote {
+				text-align: center;
 				width: 70%;
+				margin-left: auto;
+				margin-right: auto;
 			}
+		}
+	}
+
+	.footer {
+		&-img {
+			width: 55%;
+			bottom: 380px;
 		}
 	}
 }
@@ -2253,7 +2283,11 @@ main {
 
 	.footer {
 		&-img {
-			width: 55%;
+			width: 60%;
+			bottom: 450px;
+		}
+		&-contact {
+			padding-top: 30px;
 		}
 	}
 
