@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap");
 :root {
+  scroll-behavior: smooth;
+}
+
+:root {
   color: #333333;
   font-family: "Raleway", sans-serif;
   letter-spacing: 1px;
@@ -27,10 +31,6 @@ main {
   padding-right: 0 !important;
 }
 
-.modal-open {
-  overflow: hidden;
-  padding-right: 0 !important;
-}
 .modal-open header,
 .modal-open main,
 .modal-open footer {
@@ -70,9 +70,11 @@ main {
   height: 100%;
 }
 .header-navbar-nav-link {
+  position: relative;
+  top: 0;
   margin-left: 30px;
-  padding: 15px 10px;
-  color: #3C5D70;
+  padding: 80px 10px 20px;
+  color: white;
   background-color: transparent;
   font: normal normal 700 1rem "Raleway", sans-serif;
   text-decoration: none;
@@ -83,32 +85,61 @@ main {
   margin-left: 0;
 }
 .header-navbar-nav-link:hover {
-  color: #3C5D70;
+  color: #4E758A;
   background-color: white;
 }
-.header-box {
-  width: 50%;
-  margin: 50px auto 0;
-  padding: 20px;
-  background-color: #3C5D70ee;
-  color: white;
-  text-align: center;
+.header-content {
+  display: flex;
+  align-items: center;
 }
-.header-box-title {
-  font: normal small-caps 300 4rem "Raleway", sans-serif;
+.header-content-text {
+  width: 50%;
+  padding: 50px 0;
+  color: white;
+}
+.header-content-text-title {
+  font: normal small-caps 600 3.2rem "Raleway", sans-serif;
   margin-bottom: 0;
 }
-.header-box-title::after {
+.header-content-text-title::after {
   content: "";
   display: block;
-  width: 50%;
+  width: 100%;
   height: 2px;
   margin: 20px auto;
   background-color: white;
 }
-.header-box-subtitle {
+.header-content-text-subtitle {
   margin-top: 0;
   font: normal normal 400 2rem "Raleway", sans-serif;
+}
+.header-content-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+}
+.header-content-buttons-button {
+  width: 50%;
+  padding: 20px 0;
+  text-decoration: none;
+  color: white;
+  font: normal small-caps 600 1.2rem "Raleway", sans-serif;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.header-content-buttons-button:nth-of-type(1) {
+  margin-bottom: 20px;
+  background-color: #7DAB4E;
+}
+.header-content-buttons-button:nth-of-type(2) {
+  background-color: #4E758A;
+}
+.header-content-buttons-button:hover {
+  color: white;
+  filter: brightness(0.9);
 }
 
 .intro {
@@ -211,6 +242,7 @@ main {
 .ceo-figure-img {
   width: auto;
   object-fit: cover;
+  aspect-ratio: 1/1;
 }
 .ceo-figure-text {
   position: relative;
@@ -244,7 +276,7 @@ main {
   width: 100%;
   margin-top: 100px;
   color: #333333;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
   border-radius: 5px;
   z-index: 1;
   text-decoration: none;
@@ -261,18 +293,18 @@ main {
   box-sizing: content-box;
   padding: 15px;
   color: white;
-  background-color: #3C5D70;
+  background-color: #4E758A;
   transition: all 0.3s ease-in-out;
 }
 .ceo-figure-text-author-link:hover .ceo-figure-text-author-link-text {
-  color: #3C5D70;
+  color: #4E758A;
 }
 .ceo-figure-text-quotes {
   position: absolute;
   top: -1rem;
   right: -2rem;
   font-size: 2rem;
-  color: #3C5D70;
+  color: #4E758A;
 }
 
 .numbers {
@@ -293,16 +325,16 @@ main {
   text-align: center;
 }
 .numbers-item:nth-child(1) .numbers-item-number-numeral {
-  background-color: #7DAD4A;
+  background-color: #7DAB4E;
 }
 .numbers-item:nth-child(2) .numbers-item-number-numeral {
-  background-color: #3C5D70;
+  background-color: #4E758A;
 }
 .numbers-item:nth-child(3) .numbers-item-number-numeral {
-  background-color: #985797;
+  background-color: #985895;
 }
 .numbers-item:nth-child(4) .numbers-item-number-numeral {
-  background-color: #DA8C1D;
+  background-color: #D88A24;
 }
 .numbers-item-number {
   margin-bottom: 10px;
@@ -340,7 +372,7 @@ main {
 }
 .brokers-box {
   position: relative;
-  width: 50%;
+  width: 80%;
   padding-bottom: 20px;
   border-bottom: 1px solid #F0EFF0;
 }
@@ -355,17 +387,18 @@ main {
   height: 1rem !important;
   width: 1rem !important;
   padding: 5px !important;
-  border: 1px solid #3C5D70 !important;
+  border: 1px solid #4E758A !important;
   background-clip: content-box !important;
   background-color: transparent !important;
   border-radius: 1.2rem;
 }
 .brokers-box-indicators-indicator.active {
-  background-color: #3C5D70 !important;
+  background-color: #4E758A !important;
 }
 .brokers-box-items-item {
   margin-bottom: 0;
   background-color: #E4EEFB;
+  height: 300px;
 }
 .brokers-box-items-item.active, .brokers-box-items-item.carousel-item-start, .brokers-box-items-item.carousel-item-end {
   display: flex;
@@ -376,7 +409,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 50%;
+  width: 70%;
   padding: 20px;
 }
 .brokers-box-items-item-figcaption-quote {
@@ -401,7 +434,7 @@ main {
   font: normal small-caps 500 1.2rem "Raleway", sans-serif;
 }
 .brokers-box-items-item-img {
-  width: 50%;
+  width: 30%;
   object-fit: cover;
 }
 .brokers-box-control {
@@ -455,7 +488,7 @@ main {
 }
 .info-text-form-tel:focus {
   outline: none;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
 }
 .info-text-form-tel::placeholder {
   color: #333333;
@@ -475,8 +508,8 @@ main {
   border: 1px solid #AAAAAA;
 }
 .info-text-form-submit.enabled {
-  background-color: #7DAD4A;
-  border: 1px solid #7DAD4A;
+  background-color: #7DAB4E;
+  border: 1px solid #7DAB4E;
 }
 .info-text-form-disclaimer {
   width: 75%;
@@ -516,7 +549,7 @@ main {
 .transfer-header {
   text-align: center;
   padding-bottom: 50px;
-  border-bottom: 1px solid #3C5D70;
+  border-bottom: 1px solid #4E758A;
 }
 .transfer-header-heading {
   font: normal normal 500 1.8rem "Raleway", sans-serif;
@@ -527,7 +560,7 @@ main {
 }
 .transfer-header-description-arrow {
   position: relative;
-  color: #3C5D70;
+  color: #4E758A;
   font-size: 1.2rem;
   top: 2px;
 }
@@ -564,7 +597,7 @@ main {
 .transfer-people-person-list-item-marker {
   position: relative;
   top: -2px;
-  color: #3C5D70;
+  color: #4E758A;
   font-size: 1.2rem;
 }
 .transfer-box {
@@ -620,7 +653,7 @@ main {
 }
 .portal-info-form-name:focus {
   outline: none;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
 }
 .portal-info-form-name::placeholder {
   color: #333333;
@@ -638,7 +671,7 @@ main {
 }
 .portal-info-form-surname:focus {
   outline: none;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
 }
 .portal-info-form-surname::placeholder {
   color: #333333;
@@ -656,7 +689,7 @@ main {
 }
 .portal-info-form-email:focus {
   outline: none;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
 }
 .portal-info-form-email::placeholder {
   color: #333333;
@@ -674,7 +707,7 @@ main {
 }
 .portal-info-form-tel:focus {
   outline: none;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
 }
 .portal-info-form-tel::placeholder {
   color: #333333;
@@ -692,7 +725,7 @@ main {
 }
 .portal-info-form-username:focus {
   outline: none;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
 }
 .portal-info-form-username::placeholder {
   color: #333333;
@@ -706,14 +739,14 @@ main {
   border-radius: 3px;
   outline: none;
   transition: all 0.3s ease-in-out;
-  background-color: #3C5D70;
+  background-color: #4E758A;
   color: white;
   border: none;
   width: 100%;
 }
 .portal-info-form-submit:focus {
   outline: none;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
 }
 .portal-info-form-submit::placeholder {
   color: #333333;
@@ -733,43 +766,43 @@ main {
 }
 .portal-info-form-login-link {
   text-decoration: none;
-  color: #3C5D70;
+  color: #4E758A;
   transition: all 0.3s ease-in-out;
   display: inline-block;
 }
 .portal-info-form-login-link:hover {
-  color: #3C5D70;
+  color: #4E758A;
 }
 .portal-info-form-login-link::after {
   display: block;
   content: "";
-  border-bottom: 1px solid #3C5D70;
+  border-bottom: 1px solid #4E758A;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out;
 }
 .portal-info-form-login-link:hover::after {
   transform: scaleX(1);
-  border-bottom: 1px solid #3C5D70;
+  border-bottom: 1px solid #4E758A;
 }
 .portal-info-form-disclaimer-link {
   text-decoration: none;
-  color: #3C5D70;
+  color: #4E758A;
   transition: all 0.3s ease-in-out;
   display: inline-block;
 }
 .portal-info-form-disclaimer-link:hover {
-  color: #3C5D70;
+  color: #4E758A;
 }
 .portal-info-form-disclaimer-link::after {
   display: block;
   content: "";
-  border-bottom: 1px solid #3C5D70;
+  border-bottom: 1px solid #4E758A;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out;
 }
 .portal-info-form-disclaimer-link:hover::after {
   transform: scaleX(1);
-  border-bottom: 1px solid #3C5D70;
+  border-bottom: 1px solid #4E758A;
 }
 .portal-images {
   width: 40%;
@@ -779,7 +812,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #3C5D70aa;
+  background-color: #4E758Aaa;
   color: white;
   border-radius: 10px;
   overflow: hidden;
@@ -836,7 +869,7 @@ main {
 }
 .example-text-form-email:focus {
   outline: none;
-  border: 1px solid #3C5D70;
+  border: 1px solid #4E758A;
 }
 .example-text-form-email::placeholder {
   color: #333333;
@@ -856,8 +889,8 @@ main {
   border: 1px solid #AAAAAA;
 }
 .example-text-form-submit.enabled {
-  background-color: #985797;
-  border: 1px solid #985797;
+  background-color: #985895;
+  border: 1px solid #985895;
 }
 .example-text-disclaimer {
   font: normal normal 300 0.7rem "Raleway", sans-serif;
@@ -906,7 +939,7 @@ main {
   top: -1rem;
   right: -2rem;
   font-size: 2rem;
-  color: #3C5D70;
+  color: #4E758A;
 }
 .support-img {
   width: 30%;
@@ -1022,30 +1055,33 @@ main {
   align-items: center;
   text-align: center;
   color: white;
-  background-color: #3C5D70;
+  background-color: #4E758A;
   padding: 30px 50px;
   border-radius: 10px !important;
 }
 .modal-header {
   font: normal small-caps 500 1.8rem "Raleway", sans-serif;
   border-bottom: none;
+  margin-bottom: 0;
 }
 .modal-body {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 0;
+  padding: 0;
 }
 .modal-body-img {
   width: 40%;
+  padding: 30px 0;
 }
 .modal-body-features {
   display: flex;
   align-items: stretch;
   justify-content: center;
   margin: 30px 0;
-  width: 110%;
+  width: 95%;
+  min-width: 950px;
 }
 .modal-body-features-feature {
   display: flex;
@@ -1053,7 +1089,7 @@ main {
   justify-content: center;
   height: auto;
   width: 30%;
-  font: normal small-caps 500 1.2rem "Raleway", sans-serif;
+  font: normal small-caps 500 1.4rem "Raleway", sans-serif;
 }
 .modal-body-features-feature:nth-child(1) {
   padding-right: 10px;
@@ -1071,8 +1107,8 @@ main {
   border-top: none;
 }
 .modal-footer-button {
-  padding: 20px;
-  background-color: #7DAD4A;
+  padding: 20px 50px;
+  background-color: #7DAB4E;
   text-decoration: none;
   overflow: none;
   border: none;
@@ -1098,7 +1134,7 @@ main {
   }
 
   .brokers-box {
-    width: 60%;
+    width: 90%;
   }
 
   .portal-info-form-login {
@@ -1114,6 +1150,10 @@ main {
   .footer-img {
     width: 30%;
     bottom: 150px;
+  }
+
+  .modal-body-features {
+    min-width: 800px;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -1141,7 +1181,16 @@ main {
   }
 
   .brokers-box {
-    width: 70%;
+    width: 85%;
+  }
+  .brokers-box-items-item {
+    height: 400px;
+  }
+  .brokers-box-items-item-figcaption {
+    width: 60%;
+  }
+  .brokers-box-items-item-img {
+    width: 40%;
   }
 
   .info .container {
@@ -1234,7 +1283,7 @@ main {
   }
   .ceo-figure-img {
     order: 2;
-    height: 50%;
+    height: 350px;
     width: auto;
     margin-bottom: 50px;
   }
@@ -1255,9 +1304,12 @@ main {
     max-width: 90%;
   }
   .brokers-box {
-    width: 70%;
+    width: 85%;
     margin-left: auto;
     margin-right: auto;
+  }
+  .brokers-box-items-item {
+    height: 500px;
   }
 
   .info {
@@ -1299,13 +1351,13 @@ main {
     height: 1rem !important;
     width: 1rem !important;
     padding: 5px !important;
-    border: 1px solid #3C5D70 !important;
+    border: 1px solid #4E758A !important;
     background-clip: content-box !important;
     background-color: transparent !important;
     border-radius: 1.2rem;
   }
   .transfer-box-indicators-indicator.active {
-    background-color: #3C5D70 !important;
+    background-color: #4E758A !important;
   }
   .transfer-box-items {
     height: 100%;
@@ -1321,7 +1373,7 @@ main {
     margin-bottom: 30px;
   }
   .transfer-box-items-person-list-item-marker {
-    color: #3C5D70;
+    color: #4E758A;
   }
   .transfer-box-items-person.active, .transfer-box-items-person.carousel-item-start, .transfer-box-items-person.carousel-item-end {
     display: flex;
@@ -1421,7 +1473,27 @@ main {
     height: auto;
   }
   .modal-body-features {
-    width: 120%;
+    width: 100%;
+    min-width: auto;
+    flex-direction: column;
+    align-items: center;
+  }
+  .modal-body-features-feature {
+    align-items: center;
+    width: 50%;
+    min-width: 300px;
+    text-align: center;
+    padding: 0 !important;
+    padding: 10px 0 !important;
+    border: none !important;
+    border-bottom: 2px solid white !important;
+  }
+  .modal-body-features-feature:first-of-type {
+    padding-top: 0 !important;
+  }
+  .modal-body-features-feature:last-of-type {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
   }
 }
 @media screen and (max-width: 768px) {
@@ -1478,14 +1550,17 @@ main {
 
   .brokers-box-items-item {
     flex-direction: column;
+    justify-content: space-between;
+    height: 850px;
   }
   .brokers-box-items-item-figcaption {
     width: 100%;
+    height: 50%;
     text-align: center;
   }
   .brokers-box-items-item-img {
     width: 100%;
-    height: 350px;
+    height: 50%;
   }
 
   .info .container {
@@ -1538,13 +1613,13 @@ main {
     height: 1rem !important;
     width: 1rem !important;
     padding: 5px !important;
-    border: 1px solid #3C5D70 !important;
+    border: 1px solid #4E758A !important;
     background-clip: content-box !important;
     background-color: transparent !important;
     border-radius: 1.2rem;
   }
   .portal-box-indicators-indicator.active {
-    background-color: #3C5D70 !important;
+    background-color: #4E758A !important;
   }
   .portal-box-items {
     border-radius: 5px;
@@ -1553,7 +1628,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #3C5D70aa;
+    background-color: #4E758Aaa;
     color: white;
     border-radius: 10px;
     overflow: hidden;
@@ -1681,7 +1756,7 @@ main {
     padding-bottom: 20px;
   }
   .ceo-figure-img {
-    width: 70%;
+    width: 100%;
     height: auto;
   }
 

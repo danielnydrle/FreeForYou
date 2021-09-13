@@ -2,17 +2,21 @@
 
 $transition: all .3s ease-in-out;
 $blue-light: #E4EEFB;
-$blue: #3C5D70;
+$blue: #4E758A;
 $gray-light: #F0EFF0;
 $gray: #AAAAAA;
 $gray-dark: #333333;
-$green: #7DAD4A;
-$purple: #985797;
-$orange: #DA8C1D;
+$green: #7DAB4E;
+$purple: #985895;
+$orange: #D88A24;
 $orange-light: #FFC000;
 $creme: #FDF9ED;
 $font-family: "Raleway",
 sans-serif;
+
+:root {
+	scroll-behavior: smooth;
+}
 
 @mixin transition {
 	transition: $transition;
@@ -110,8 +114,6 @@ main {
 }
 
 .modal-open {
-	overflow: hidden;
-	padding-right: 0 !important;
 
 	& header,
 	main,
@@ -157,9 +159,11 @@ main {
 
 		&-nav {
 			&-link {
+				position: relative;
+				top: 0;
 				margin-left: 30px;
-				padding: 15px 10px;
-				color: $blue;
+				padding: 80px 10px 20px;
+				color: white;
 				background-color: transparent;
 				font: normal normal 700 1rem $font-family;
 				text-decoration: none;
@@ -178,31 +182,61 @@ main {
 		}
 	}
 
-	&-box {
-		width: 50%;
-		margin: 50px auto 0;
-		padding: 20px;
-		background-color: #{$blue}ee;
-		color: white;
-		text-align: center;
+	&-content {
+		display: flex;
+		align-items: center;
+		&-text {
+			width: 50%;
+			padding: 50px 0;
+			color: white;
 
-		&-title {
-			font: normal small-caps 300 4rem $font-family;
-			margin-bottom: 0;
+			&-title {
+				font: normal small-caps 600 3.2rem $font-family;
+				margin-bottom: 0;
 
-			&::after {
-				content: "";
-				display: block;
-				width: 50%;
-				height: 2px;
-				margin: 20px auto;
-				background-color: white;
+				&::after {
+					content: "";
+					display: block;
+					width: 100%;
+					height: 2px;
+					margin: 20px auto;
+					background-color: white;
+				}
+			}
+
+			&-subtitle {
+				margin-top: 0;
+				font: normal normal 400 2rem $font-family;
 			}
 		}
 
-		&-subtitle {
-			margin-top: 0;
-			font: normal normal 400 2rem $font-family;
+		&-buttons {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			align-items: center;
+			width: 50%;
+			&-button {
+				width: 50%;
+				padding: 20px 0;
+				text-decoration: none;
+				color: white;
+				font: normal small-caps 600 1.2rem $font-family;
+				text-align: center;
+				border-radius: 5px;
+				@include transition();
+				&:nth-of-type(1) {
+					margin-bottom: 20px;
+					background-color: $green;
+				}
+				&:nth-of-type(2) {
+					background-color: $blue;
+				}
+				&:hover {
+					color: white;
+					filter: brightness(0.9);
+				}
+			}
 		}
 	}
 }
@@ -330,6 +364,7 @@ main {
 		&-img {
 			width: auto;
 			object-fit: cover;
+			aspect-ratio: 1/1;
 		}
 
 		&-text {
@@ -484,7 +519,7 @@ main {
 
 	&-box {
 		position: relative;
-		width: 50%;
+		width: 80%;
 		padding-bottom: 20px;
 		border-bottom: 1px solid $gray-light;
 
@@ -496,6 +531,7 @@ main {
 			&-item {
 				margin-bottom: 0;
 				background-color: $blue-light;
+				height: 300px;
 
 				&.active,
 				&.carousel-item-start,
@@ -509,7 +545,7 @@ main {
 					display: flex;
 					flex-direction: column;
 					justify-content: space-evenly;
-					width: 50%;
+					width: 70%;
 					padding: 20px;
 
 					&-quote {
@@ -541,7 +577,7 @@ main {
 				}
 
 				&-img {
-					width: 50%;
+					width: 30%;
 					object-fit: cover;
 				}
 			}
@@ -1069,6 +1105,7 @@ main {
 
 		&-column {
 			width: 50%;
+
 			&-map {
 				height: 120%;
 			}
@@ -1109,6 +1146,7 @@ main {
 	&-header {
 		font: normal small-caps 500 1.8rem $font-family;
 		border-bottom: none;
+		margin-bottom: 0;
 	}
 
 	&-body {
@@ -1116,10 +1154,11 @@ main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding-bottom: 0;
+		padding: 0;
 
 		&-img {
 			width: 40%;
+			padding: 30px 0;
 		}
 
 		&-features {
@@ -1127,7 +1166,8 @@ main {
 			align-items: stretch;
 			justify-content: center;
 			margin: 30px 0;
-			width: 110%;
+			width: 95%;
+			min-width: 950px;
 
 			&-feature {
 				display: flex;
@@ -1135,7 +1175,7 @@ main {
 				justify-content: center;
 				height: auto;
 				width: 30%;
-				font: normal small-caps 500 1.2rem $font-family;
+				font: normal small-caps 500 1.4rem $font-family;
 
 				&:nth-child(1) {
 					padding-right: 10px;
@@ -1159,7 +1199,7 @@ main {
 		border-top: none;
 
 		&-button {
-			padding: 20px;
+			padding: 20px 50px;
 			background-color: $green;
 			text-decoration: none;
 			overflow: none;
@@ -1199,7 +1239,7 @@ main {
 
 	.brokers {
 		&-box {
-			width: 60%;
+			width: 90%;
 		}
 	}
 
@@ -1229,6 +1269,14 @@ main {
 		&-img {
 			width: 30%;
 			bottom: 150px;
+		}
+	}
+
+	.modal {
+		&-body {
+			&-features {
+				min-width: 800px;
+			}
 		}
 	}
 }
@@ -1276,7 +1324,21 @@ main {
 
 	.brokers {
 		&-box {
-			width: 70%;
+			width: 85%;
+
+			&-items {
+				&-item {
+					height: 400px;
+
+					&-figcaption {
+						width: 60%;
+					}
+
+					&-img {
+						width: 40%;
+					}
+				}
+			}
 		}
 	}
 
@@ -1402,7 +1464,7 @@ main {
 
 			&-img {
 				order: 2;
-				height: 50%;
+				height: 350px;
 				width: auto;
 				margin-bottom: 50px;
 			}
@@ -1429,9 +1491,15 @@ main {
 		}
 
 		&-box {
-			width: 70%;
+			width: 85%;
 			margin-left: auto;
 			margin-right: auto;
+
+			&-items {
+				&-item {
+					height: 500px;
+				}
+			}
 		}
 	}
 
@@ -1611,6 +1679,7 @@ main {
 			padding-left: 0;
 			margin-top: 20px;
 			text-align: right;
+
 			&-column {
 				&:first-of-type {
 					padding-right: 30px;
@@ -1634,7 +1703,30 @@ main {
 			height: auto;
 
 			&-features {
-				width: 120%;
+				width: 100%;
+				min-width: auto;
+				flex-direction: column;
+				align-items: center;
+
+				&-feature {
+					align-items: center;
+					width: 50%;
+					min-width: 300px;
+					text-align: center;
+					padding: 0 !important;
+					padding: 10px 0 !important;
+					border: none !important;
+					border-bottom: 2px solid white !important;
+
+					&:first-of-type {
+						padding-top: 0 !important;
+					}
+
+					&:last-of-type {
+						border-bottom: none !important;
+						padding-bottom: 0 !important;
+					}
+				}
 			}
 		}
 	}
@@ -1713,15 +1805,18 @@ main {
 			&-items {
 				&-item {
 					flex-direction: column;
+					justify-content: space-between;
+					height: 850px;
 
 					&-figcaption {
 						width: 100%;
+						height: 50%;
 						text-align: center;
 					}
 
 					&-img {
 						width: 100%;
-						height: 350px;
+						height: 50%;
 					}
 				}
 			}
@@ -1970,7 +2065,7 @@ main {
 			}
 
 			&-img {
-				width: 70%;
+				width: 100%;
 				height: auto;
 			}
 		}
@@ -2178,6 +2273,7 @@ main {
 
 	.footer {
 		background-size: cover;
+
 		.container {
 			width: 100%;
 			padding: 30px 15px 0;
@@ -2195,9 +2291,11 @@ main {
 				text-align: center;
 				width: 100%;
 				padding: 0 !important;
+
 				&:first-of-type {
 					margin-bottom: 20px;
 				}
+
 				&-map {
 					height: 150px;
 				}
@@ -2286,6 +2384,7 @@ main {
 			width: 60%;
 			bottom: 450px;
 		}
+
 		&-contact {
 			padding-top: 30px;
 		}

@@ -11,9 +11,9 @@ const introInsightsList = document.querySelectorAll(".intro-insights-insight");
 const introText = document.querySelector(".intro-text");
 const introImg = document.querySelector(".intro-img");
 const introTexts = [
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in consectetur arcu. Duis ultrices aliquam mauris sed pretium. Maecenas libero. ",
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius et nulla at aliquam. Suspendisse potenti. Sed fringilla neque id. ",
-	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies vulputate ligula, ac placerat lectus placerat ut. Curabitur at sem. "
+	"Unikátní online portál Energobanking zjednodušuje a urychluje přepis energií.<br /><br />Administrativu vyřešíme za vás.",
+	"Získejte pasivní příjem z přepisu energií u vašich klientů. Služba přepisu je ZDARMA.<br /><br />Neplatíte žádné registrační poplatky.",
+	"Vaše rozhodnutí přepsat energie s FREE for YOU uspoří drahocenný čas a sníží náklady na energie.<br /><br />Průměrná roční úspora klienta je 3 769 Kč."
 ];
 
 const ceoFigure = document.querySelector(".ceo-figure");
@@ -88,7 +88,7 @@ const introChange = (e) => {
 	introImg.setAttribute("src", imagePath)
 	introImg.setAttribute("alt", introHeading)
 
-	introText.innerText = introTexts[introPosition];
+	introText.innerHTML = introTexts[introPosition];
 
 }
 
@@ -177,6 +177,7 @@ const manipulateElements = () => {
 	}
 	if (window.innerWidth > 992) {
 		ceoImg.style.height = `${ceoText.offsetHeight}px`;
+		ceoText.appendChild(ceoButton);
 	} else {
 		ceoImg.style.removeProperty("height");
 		ceoFigure.appendChild(ceoButton);
