@@ -85,6 +85,15 @@ sans-serif;
 	}
 }
 
+@mixin fixCarousel() {
+	transition: -webkit-transform 0.5s ease;
+	transition: transform 0.5s ease;
+	transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+	-webkit-backface-visibility: visible;
+	backface-visibility: visible;
+
+}
+
 :root {
 	color: $gray-dark;
 	font-family: $font-family;
@@ -185,6 +194,7 @@ main {
 	&-content {
 		display: flex;
 		align-items: center;
+
 		&-text {
 			width: 50%;
 			padding: 50px 0;
@@ -216,6 +226,7 @@ main {
 			justify-content: flex-end;
 			align-items: center;
 			width: 50%;
+
 			&-button {
 				width: 50%;
 				padding: 20px 0;
@@ -225,13 +236,16 @@ main {
 				text-align: center;
 				border-radius: 5px;
 				@include transition();
+
 				&:nth-of-type(1) {
 					margin-bottom: 20px;
 					background-color: $green;
 				}
+
 				&:nth-of-type(2) {
 					background-color: $blue;
 				}
+
 				&:hover {
 					color: white;
 					filter: brightness(0.9);
@@ -441,6 +455,12 @@ main {
 	}
 }
 
+.fancybox {
+	&__caption {
+		text-align: center;
+	}
+}
+
 .numbers {
 	padding: 50px 0 30px;
 	background-color: $creme;
@@ -522,6 +542,7 @@ main {
 		width: 80%;
 		padding-bottom: 20px;
 		border-bottom: 1px solid $gray-light;
+		@include fixCarousel();
 
 		&-indicators {
 			@include indicators();
@@ -806,7 +827,7 @@ main {
 			flex-wrap: wrap;
 			background-color: $orange-light;
 			border-radius: 10px;
-			margin-top: 40px;
+			margin-top: 100px;
 			scroll-margin-top: 40px;
 			padding: 30px 50px;
 
@@ -938,10 +959,6 @@ main {
 	&-text {
 		width: 50%;
 
-		&-heading {}
-
-		&-para {}
-
 		&-form {
 			display: flex;
 			justify-content: space-between;
@@ -1039,7 +1056,7 @@ main {
 }
 
 .footer {
-	padding: 200px 0 50px;
+	padding: 225px 0 50px;
 	background-image: url("../assets/vlna_kontakt.png");
 	background-position: top;
 	color: white;
@@ -1106,8 +1123,10 @@ main {
 		&-column {
 			width: 50%;
 
-			&-map {
-				height: 120%;
+			&-maplink {
+				&-image {
+					height: 150px;
+				}
 			}
 		}
 
@@ -1218,13 +1237,20 @@ main {
 
 @media screen and (max-width: 1400px) {
 	.header {
-		&-box {
-			&-title {
-				font: normal normal 400 3.2rem $font-family;
+		&-content {
+
+			&-text {
+				&-title {
+					font: normal normal 400 3.2rem $font-family;
+				}
+
+				&-subtitle {
+					font: normal normal 400;
+				}
 			}
 
-			&-subtitle {
-				font: normal normal 400;
+			&-buttons {
+				align-items: flex-end;
 			}
 		}
 	}
@@ -1282,6 +1308,20 @@ main {
 }
 
 @media screen and (max-width: 1200px) {
+	.header {
+		&-content {
+			&-text {
+				width: 65%;
+			}
+
+			&-buttons {
+				&-button {
+					width: 70%;
+				}
+			}
+		}
+	}
+
 	.intro {
 		&-insights {
 			width: 35%;
@@ -1349,6 +1389,10 @@ main {
 
 		&-text {
 			width: 60%;
+
+			&-description {
+				margin-bottom: 10px;
+			}
 		}
 	}
 
@@ -1379,12 +1423,10 @@ main {
 			&-figure {
 				&:nth-child(1) {}
 
-				&:nth-child(2) {
-					right: -50px;
-				}
+				&:nth-child(2) {}
 
 				&:nth-child(3) {
-					left: 0;
+					left: -25px;
 				}
 			}
 		}
@@ -1403,8 +1445,22 @@ main {
 
 @media screen and (max-width: 992px) {
 	.header {
-		&-box {
-			width: 70%;
+		&-content {
+			flex-wrap: wrap;
+
+			&-text {
+				text-align: center;
+				width: 100%;
+			}
+
+			&-buttons {
+				width: 100%;
+				align-items: center;
+
+				&-button {
+					width: 50%;
+				}
+			}
 		}
 	}
 
@@ -1537,6 +1593,7 @@ main {
 		&-box {
 			padding: 20px 0;
 			display: block;
+			@include fixCarousel();
 
 			&-indicators {
 				@include indicators();
@@ -1578,24 +1635,77 @@ main {
 	}
 
 	.portal {
+
+		.container {
+			display: block;
+		}
+
 		&-info {
-			width: 53%;
+			width: 100%;
 
 			&-form {
-				padding: 30px;
-
-				&-login {
-					width: 100%;
-				}
+				margin-top: 70px;
 			}
 		}
 
 		&-images {
-			width: 44%;
+			display: none;
+		}
 
-			&-figure {
-				&:nth-child(1) {
-					left: 0;
+		&-box {
+			display: block;
+			margin-top: 20px;
+			margin-bottom: 85px;
+			@include fixCarousel();
+
+			&-indicators {
+				@include indicators();
+			}
+
+			&-items {
+				border-radius: 5px;
+
+				&-item {
+					&-figure {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						background-color: #{$blue}aa;
+						color: white;
+						border-radius: 10px;
+						overflow: hidden;
+						width: 80%;
+						margin: 0 auto;
+
+						&-img {
+							height: 250px;
+							width: 100%;
+							object-fit: cover;
+						}
+
+						&-description {
+							text-align: center;
+							padding: 14px;
+						}
+
+						&.active,
+						&.carousel-item-start,
+						&.carousel-item-end {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+						}
+					}
+				}
+			}
+
+			&-control {
+				&-prev {
+					left: -15%;
+				}
+
+				&-next {
+					right: -15%;
 				}
 			}
 		}
@@ -1656,6 +1766,8 @@ main {
 	}
 
 	.footer {
+		padding-top: 200px;
+
 		.container {
 			flex-wrap: wrap;
 		}
@@ -1678,11 +1790,25 @@ main {
 			width: 100%;
 			padding-left: 0;
 			margin-top: 20px;
-			text-align: right;
+			justify-content: space-evenly;
 
 			&-column {
+				width: auto;
+
 				&:first-of-type {
-					padding-right: 30px;
+					text-align: right;
+				}
+
+				&:last-of-type {
+					text-align: left;
+				}
+
+				&-maplink {
+					text-align: left;
+
+					&-image {
+						height: 170px;
+					}
 				}
 			}
 		}
@@ -1756,8 +1882,22 @@ main {
 			}
 		}
 
-		&-box {
-			width: 80%;
+		&-content {
+			&-text {
+				&-title {
+					font: normal small-caps 500 2.6rem $font-family;
+				}
+
+				&-subtitle {
+					font: normal normal 400 2rem $font-family;
+				}
+			}
+
+			&-buttons {
+				&-button {
+					width: 60%;
+				}
+			}
 		}
 	}
 
@@ -1860,77 +2000,6 @@ main {
 		}
 	}
 
-	.portal {
-		.container {
-			display: block;
-		}
-
-		&-info {
-			width: 100%;
-		}
-
-		&-images {
-			display: none;
-		}
-
-		&-box {
-			display: block;
-			margin-top: 20px;
-			margin-bottom: 70px;
-
-			&-indicators {
-				@include indicators();
-			}
-
-			&-items {
-				border-radius: 5px;
-
-				&-item {
-					&-figure {
-						display: flex;
-						flex-direction: column;
-						align-items: center;
-						background-color: #{$blue}aa;
-						color: white;
-						border-radius: 10px;
-						overflow: hidden;
-						width: 80%;
-						margin: 0 auto;
-
-						&-img {
-							height: 250px;
-							width: 100%;
-							object-fit: cover;
-						}
-
-						&-description {
-							text-align: center;
-							padding: 14px;
-						}
-
-						&.active,
-						&.carousel-item-start,
-						&.carousel-item-end {
-							display: flex;
-							flex-direction: column;
-							align-items: center;
-						}
-					}
-				}
-			}
-
-			&-control {
-				&-prev {
-					left: -15%;
-				}
-
-				&-next {
-					right: -15%;
-				}
-			}
-		}
-	}
-
 	.example {
 		.container {
 			position: relative;
@@ -1951,6 +2020,7 @@ main {
 			&-form {
 				align-self: flex-start;
 				order: 4;
+				width: 350px;
 			}
 		}
 
@@ -1967,6 +2037,16 @@ main {
 			width: 45%;
 			bottom: 300px;
 			right: 0;
+		}
+
+		&-location {
+			&-column {
+				&-maplink {
+					&-image {
+						height: 146px;
+					}
+				}
+			}
 		}
 	}
 
@@ -2017,9 +2097,21 @@ main {
 			}
 		}
 
-		&-box {
-			&-title {
-				font: normal normal 500 2.4rem $font-family;
+		&-content {
+			&-text {
+				&-title {
+					font: normal small-caps 500 2rem $font-family;
+				}
+				&-subtitle {
+					font: normal normal 500 1.6rem $font-family;
+				}
+			}
+			&-buttons {
+				&-button {
+					width: 100%;
+					padding-left: 10px;
+					padding-right: 10px;
+				}
 			}
 		}
 	}
@@ -2286,18 +2378,15 @@ main {
 
 		&-location {
 			flex-direction: column;
+			align-items: center;
 
 			&-column {
-				text-align: center;
+				text-align: center !important;
 				width: 100%;
 				padding: 0 !important;
 
 				&:first-of-type {
 					margin-bottom: 20px;
-				}
-
-				&-map {
-					height: 150px;
 				}
 			}
 		}

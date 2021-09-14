@@ -307,6 +307,10 @@ main {
   color: #4E758A;
 }
 
+.fancybox__caption {
+  text-align: center;
+}
+
 .numbers {
   padding: 50px 0 30px;
   background-color: #FDF9ED;
@@ -375,6 +379,11 @@ main {
   width: 80%;
   padding-bottom: 20px;
   border-bottom: 1px solid #F0EFF0;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
 }
 .brokers-box-indicators {
   bottom: -50px;
@@ -634,7 +643,7 @@ main {
   flex-wrap: wrap;
   background-color: #FFC000;
   border-radius: 10px;
-  margin-top: 40px;
+  margin-top: 100px;
   scroll-margin-top: 40px;
   padding: 30px 50px;
 }
@@ -946,7 +955,7 @@ main {
 }
 
 .footer {
-  padding: 200px 0 50px;
+  padding: 225px 0 50px;
   background-image: url("../assets/vlna_kontakt.png");
   background-position: top;
   color: white;
@@ -1015,8 +1024,8 @@ main {
 .footer-location-column {
   width: 50%;
 }
-.footer-location-column-map {
-  height: 120%;
+.footer-location-column-maplink-image {
+  height: 150px;
 }
 .footer-location-email {
   color: white;
@@ -1122,11 +1131,14 @@ main {
 }
 
 @media screen and (max-width: 1400px) {
-  .header-box-title {
+  .header-content-text-title {
     font: normal normal 400 3.2rem "Raleway", sans-serif;
   }
-  .header-box-subtitle {
+  .header-content-text-subtitle {
     font: normal normal 400;
+  }
+  .header-content-buttons {
+    align-items: flex-end;
   }
 
   .intro {
@@ -1157,6 +1169,13 @@ main {
   }
 }
 @media screen and (max-width: 1200px) {
+  .header-content-text {
+    width: 65%;
+  }
+  .header-content-buttons-button {
+    width: 70%;
+  }
+
   .intro-insights {
     width: 35%;
   }
@@ -1199,6 +1218,9 @@ main {
   .info-text {
     width: 60%;
   }
+  .info-text-description {
+    margin-bottom: 10px;
+  }
 
   .transfer {
     padding-bottom: 170px;
@@ -1216,11 +1238,8 @@ main {
   .portal-images {
     width: 45%;
   }
-  .portal-images-figure:nth-child(2) {
-    right: -50px;
-  }
   .portal-images-figure:nth-child(3) {
-    left: 0;
+    left: -25px;
   }
 
   .example .container {
@@ -1231,8 +1250,19 @@ main {
   }
 }
 @media screen and (max-width: 992px) {
-  .header-box {
-    width: 70%;
+  .header-content {
+    flex-wrap: wrap;
+  }
+  .header-content-text {
+    text-align: center;
+    width: 100%;
+  }
+  .header-content-buttons {
+    width: 100%;
+    align-items: center;
+  }
+  .header-content-buttons-button {
+    width: 50%;
   }
 
   .intro {
@@ -1338,6 +1368,11 @@ main {
   .transfer-box {
     padding: 20px 0;
     display: block;
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
   }
   .transfer-box-indicators {
     bottom: -50px;
@@ -1381,20 +1416,80 @@ main {
     align-items: center;
   }
 
+  .portal .container {
+    display: block;
+  }
   .portal-info {
-    width: 53%;
-  }
-  .portal-info-form {
-    padding: 30px;
-  }
-  .portal-info-form-login {
     width: 100%;
   }
-  .portal-images {
-    width: 44%;
+  .portal-info-form {
+    margin-top: 70px;
   }
-  .portal-images-figure:nth-child(1) {
-    left: 0;
+  .portal-images {
+    display: none;
+  }
+  .portal-box {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 85px;
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+  }
+  .portal-box-indicators {
+    bottom: -50px;
+    position: absolute;
+    margin-bottom: 0;
+  }
+  .portal-box-indicators-indicator {
+    display: block;
+    opacity: 1 !important;
+    height: 1rem !important;
+    width: 1rem !important;
+    padding: 5px !important;
+    border: 1px solid #4E758A !important;
+    background-clip: content-box !important;
+    background-color: transparent !important;
+    border-radius: 1.2rem;
+  }
+  .portal-box-indicators-indicator.active {
+    background-color: #4E758A !important;
+  }
+  .portal-box-items {
+    border-radius: 5px;
+  }
+  .portal-box-items-item-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4E758Aaa;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .portal-box-items-item-figure-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+  .portal-box-items-item-figure-description {
+    text-align: center;
+    padding: 14px;
+  }
+  .portal-box-items-item-figure.active, .portal-box-items-item-figure.carousel-item-start, .portal-box-items-item-figure.carousel-item-end {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .portal-box-control-prev {
+    left: -15%;
+  }
+  .portal-box-control-next {
+    right: -15%;
   }
 
   .example .container {
@@ -1436,6 +1531,9 @@ main {
     right: -3rem;
   }
 
+  .footer {
+    padding-top: 200px;
+  }
   .footer .container {
     flex-wrap: wrap;
   }
@@ -1455,10 +1553,22 @@ main {
     width: 100%;
     padding-left: 0;
     margin-top: 20px;
-    text-align: right;
+    justify-content: space-evenly;
+  }
+  .footer-location-column {
+    width: auto;
   }
   .footer-location-column:first-of-type {
-    padding-right: 30px;
+    text-align: right;
+  }
+  .footer-location-column:last-of-type {
+    text-align: left;
+  }
+  .footer-location-column-maplink {
+    text-align: left;
+  }
+  .footer-location-column-maplink-image {
+    height: 170px;
   }
 
   .modal-dialog {
@@ -1515,8 +1625,14 @@ main {
     margin: 2px 0;
     padding: 8px;
   }
-  .header-box {
-    width: 80%;
+  .header-content-text-title {
+    font: normal small-caps 500 2.6rem "Raleway", sans-serif;
+  }
+  .header-content-text-subtitle {
+    font: normal normal 400 2rem "Raleway", sans-serif;
+  }
+  .header-content-buttons-button {
+    width: 60%;
   }
 
   .intro .container {
@@ -1588,74 +1704,6 @@ main {
     width: 26%;
   }
 
-  .portal .container {
-    display: block;
-  }
-  .portal-info {
-    width: 100%;
-  }
-  .portal-images {
-    display: none;
-  }
-  .portal-box {
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 70px;
-  }
-  .portal-box-indicators {
-    bottom: -50px;
-    position: absolute;
-    margin-bottom: 0;
-  }
-  .portal-box-indicators-indicator {
-    display: block;
-    opacity: 1 !important;
-    height: 1rem !important;
-    width: 1rem !important;
-    padding: 5px !important;
-    border: 1px solid #4E758A !important;
-    background-clip: content-box !important;
-    background-color: transparent !important;
-    border-radius: 1.2rem;
-  }
-  .portal-box-indicators-indicator.active {
-    background-color: #4E758A !important;
-  }
-  .portal-box-items {
-    border-radius: 5px;
-  }
-  .portal-box-items-item-figure {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #4E758Aaa;
-    color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 80%;
-    margin: 0 auto;
-  }
-  .portal-box-items-item-figure-img {
-    height: 250px;
-    width: 100%;
-    object-fit: cover;
-  }
-  .portal-box-items-item-figure-description {
-    text-align: center;
-    padding: 14px;
-  }
-  .portal-box-items-item-figure.active, .portal-box-items-item-figure.carousel-item-start, .portal-box-items-item-figure.carousel-item-end {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .portal-box-control-prev {
-    left: -15%;
-  }
-  .portal-box-control-next {
-    right: -15%;
-  }
-
   .example .container {
     position: relative;
   }
@@ -1673,6 +1721,7 @@ main {
   .example-text-form {
     align-self: flex-start;
     order: 4;
+    width: 350px;
   }
   .example-icon {
     position: absolute;
@@ -1685,6 +1734,9 @@ main {
     width: 45%;
     bottom: 300px;
     right: 0;
+  }
+  .footer-location-column-maplink-image {
+    height: 146px;
   }
 
   .modal-body-img {
@@ -1721,8 +1773,16 @@ main {
   .header-navbar-hook {
     height: 60%;
   }
-  .header-box-title {
-    font: normal normal 500 2.4rem "Raleway", sans-serif;
+  .header-content-text-title {
+    font: normal small-caps 500 2rem "Raleway", sans-serif;
+  }
+  .header-content-text-subtitle {
+    font: normal normal 500 1.6rem "Raleway", sans-serif;
+  }
+  .header-content-buttons-button {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   main {
@@ -1907,17 +1967,15 @@ main {
   }
   .footer-location {
     flex-direction: column;
+    align-items: center;
   }
   .footer-location-column {
-    text-align: center;
+    text-align: center !important;
     width: 100%;
     padding: 0 !important;
   }
   .footer-location-column:first-of-type {
     margin-bottom: 20px;
-  }
-  .footer-location-column-map {
-    height: 150px;
   }
 
   .modal-dialog {
