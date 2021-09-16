@@ -2,6 +2,7 @@
 
 $transition: all .3s ease-in-out;
 $blue-light: #E4EEFB;
+$blue-semilight: #ECF6FE;
 $blue: #4E758A;
 $gray-light: #F0EFF0;
 $gray: #AAAAAA;
@@ -166,27 +167,36 @@ main {
 			}
 		}
 
+		&-burger {
+			display: none;
+		}
+
 		&-nav {
-			&-link {
-				position: relative;
-				top: 0;
-				margin-left: 30px;
-				padding: 80px 10px 20px;
-				color: white;
-				background-color: transparent;
-				font: normal normal 700 1rem $font-family;
-				text-decoration: none;
-				@include transition;
-				border-radius: 5px;
-
-				&:first-child {
-					margin-left: 0;
+			&--large {
+				&-link {
+					position: relative;
+					top: 0;
+					margin-left: 30px;
+					padding: 80px 10px 20px;
+					color: white;
+					background-color: transparent;
+					font: normal normal 700 1rem $font-family;
+					text-decoration: none;
+					@include transition;
+					border-radius: 5px;
+	
+					&:first-child {
+						margin-left: 0;
+					}
+	
+					&:hover {
+						color: $blue;
+						background-color: white;
+					}
 				}
-
-				&:hover {
-					color: $blue;
-					background-color: white;
-				}
+			}
+			&--small {
+				display: none;
 			}
 		}
 	}
@@ -271,46 +281,46 @@ main {
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: center;
-		width: 30%;
+		width: 35%;
 		border-right: 2px solid $gray;
 
 		&-insight {
+			position: relative;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			width: 300px;
 			margin: 10px 0;
+			padding: 12px 20px;
 			color: white;
 			border-radius: 5px;
-			z-index: 1;
 			@include transition;
 
 			&-heading {
 				margin: 0 auto;
-				padding: 10px 20px;
 				font: normal small-caps 500 1rem $font-family;
+				position: relative;
+				background-color: inherit;
+				z-index: 2;
 			}
 
-			&-container {
-				position: relative;
-				padding: 10px;
-
-				&::before {
-					content: "";
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					z-index: -1;
-					background-color: black;
-					filter: opacity(0.2);
-					border-radius: 0 5px 5px 0;
-				}
-
-				&-icon {
-					font-size: 1.5rem;
-				}
+			&-line {
+				position: absolute;
+				top: 20px;
+				right: -100px;
+				width: 100px;
+				height: 3px;
+				background-color: inherit;
+			}
+			
+			&-marker {
+				position: absolute;
+				width: 43px;
+				height: 43px;
+				background-color: inherit;
+				right: -120px;
+				border-radius: 5px;
+				@include transition();
 			}
 
 			&:nth-child(1) {
@@ -323,10 +333,6 @@ main {
 
 			&:nth-child(3) {
 				background-color: #985797;
-			}
-
-			&.active {
-				transform: translateX(20px);
 			}
 
 			&:hover {
@@ -346,20 +352,35 @@ main {
 	}
 
 	&.i-0 {
-		.intro-insights-insight.e-0 {
-			transform: translateX(15px);
+		.intro-insights-insight {
+			&.e-0 {
+				transform: translateX(15px);
+				& > .intro-insights-insight-marker {
+					transform: translateX(-15px);
+				}
+			}
 		}
 	}
 
 	&.i-1 {
-		.intro-insights-insight.e-1 {
-			transform: translateX(15px);
+		.intro-insights-insight {
+			&.e-1 {
+				transform: translateX(15px);
+				& > .intro-insights-insight-marker {
+					transform: translateX(-15px);
+				}
+			}
 		}
 	}
 
 	&.i-2 {
-		.intro-insights-insight.e-2 {
-			transform: translateX(15px);
+		.intro-insights-insight {
+			&.e-2 {
+				transform: translateX(15px);
+				& > .intro-insights-insight-marker {
+					transform: translateX(-15px);
+				}
+			}
 		}
 	}
 }
@@ -463,7 +484,7 @@ main {
 
 .numbers {
 	padding: 50px 0 30px;
-	background-color: $creme;
+	background-color: $blue-semilight;
 
 	.container {
 		display: flex;
@@ -525,6 +546,7 @@ main {
 .brokers {
 	padding: 80px 0;
 	scroll-margin-top: -40px;
+	background-color: $blue-semilight;
 
 	.container {
 		display: flex;
@@ -541,7 +563,6 @@ main {
 		position: relative;
 		width: 80%;
 		padding-bottom: 20px;
-		border-bottom: 1px solid $gray-light;
 		@include fixCarousel();
 
 		&-indicators {
@@ -583,7 +604,7 @@ main {
 					}
 
 					&-para {
-						font: normal normal 500 1rem $font-family;
+						font: normal normal 400 0.9rem $font-family;
 					}
 
 					&-name {
@@ -622,6 +643,8 @@ main {
 
 .info {
 	padding: 150px 0 50px;
+	scroll-margin-top: -50px;
+	background-color: $blue-semilight;
 	background-image: url("../assets/vlna_info.png");
 	background-position: top;
 
@@ -792,6 +815,7 @@ main {
 
 .portal {
 	padding: 50px 0;
+	scroll-margin-top: -50px;
 
 	.container {
 		display: flex;
@@ -829,73 +853,10 @@ main {
 			border-radius: 10px;
 			margin-top: 100px;
 			scroll-margin-top: 40px;
-			padding: 30px 50px;
+			padding: 30px;
 
 			&-heading {
-				width: 100%;
-				font: normal small-caps 500 1.6rem $font-family
-			}
-
-			&-name {
-				@include input(10px);
-				width: 48%;
-			}
-
-			&-surname {
-				@include input(10px);
-				width: 48%;
-			}
-
-			&-email {
-				@include input(10px);
-				width: 100%;
-			}
-
-			&-tel {
-				@include input(10px);
-				width: 100%;
-			}
-
-			&-username {
-				@include input(10px);
-				width: 100%;
-			}
-
-			&-submit {
-				@include input(10px);
-				background-color: $blue;
-				color: white;
-				border: none;
-				width: 100%;
-
-				&:hover {
-					filter: brightness(0.9);
-				}
-			}
-
-			&-login {
-				width: 50%;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin: 10px 0;
-				font: normal normal 600 1rem $font-family;
-
-				&-link {
-					text-decoration: none;
-					color: $blue;
-					@include transition();
-					@include linkUnderline($blue);
-				}
-			}
-
-			&-disclaimer {
-				&-link {
-					text-decoration: none;
-					color: $blue;
-					@include transition();
-					@include linkUnderline($blue);
-				}
+				margin-left: 10px;
 			}
 		}
 	}
@@ -919,6 +880,7 @@ main {
 				height: 250px;
 				width: 100%;
 				object-fit: cover;
+				object-position: top;
 			}
 
 			&-description {
@@ -984,8 +946,8 @@ main {
 				}
 
 				&.enabled {
-					background-color: $purple;
-					border: 1px solid $purple;
+					background-color: $blue;
+					border: 1px solid $blue;
 				}
 			}
 		}
@@ -1057,6 +1019,7 @@ main {
 
 .footer {
 	padding: 225px 0 50px;
+	scroll-margin-top: 500px;
 	background-image: url("../assets/vlna_kontakt.png");
 	background-position: top;
 	color: white;
@@ -1257,10 +1220,27 @@ main {
 
 	.intro {
 		padding: 25px 0 275px;
+		&-insights {
+			width: 36%;
+			&-insight {
+				&-line {
+					right: -60px;
+				}
+				&-marker {
+					right: -80px;
+				}
+			}
+		}
 	}
 
 	.ceo {
 		&-figure {}
+	}
+
+	.numbers {
+		&-item {
+			width: 20%;
+		}
 	}
 
 	.brokers {
@@ -1270,6 +1250,8 @@ main {
 	}
 
 	.portal {
+		padding-top: 0;
+		scroll-margin-top: 0;
 		&-info {
 			&-form {
 				&-login {
@@ -1323,34 +1305,28 @@ main {
 	}
 
 	.intro {
+		padding-top: 0;
+		padding-bottom: 200px;
+		.container {
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
 		&-insights {
-			width: 35%;
+			position: relative;
+			width: 50%;
+			&-insight {
+				position: relative;
+			}
 		}
 
 		&-text {
-			width: 30%;
+			position: relative;
+			width: 50%;
 		}
 
 		&-img {
-			width: 200px;
-		}
-
-		&.i-0 {
-			.intro-insights-insight.e-0 {
-				transform: translateX(10px);
-			}
-		}
-
-		&.i-1 {
-			.intro-insights-insight.e-1 {
-				transform: translateX(10px);
-			}
-		}
-
-		&.i-2 {
-			.intro-insights-insight.e-2 {
-				transform: translateX(10px);
-			}
+			width: 400px;
+			margin: 0 auto;
 		}
 	}
 
@@ -1468,22 +1444,23 @@ main {
 		margin-top: -10px;
 		padding-bottom: 225px;
 
-		.container {
-			flex-wrap: wrap;
-			justify-content: space-between;
-		}
-
 		&-insights {
-			width: 48%;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			border-right: none;
+			&-insight {
+				left: -35px;
+			}
 		}
 
 		&-text {
-			width: 49%;
+			width: 50%;
 		}
 
 		&-img {
-			width: 300px;
-			margin: 20px auto 0;
+			width: 45%;
+			margin: 0;
 		}
 	}
 
@@ -1681,6 +1658,7 @@ main {
 							height: 250px;
 							width: 100%;
 							object-fit: cover;
+							object-position: top;
 						}
 
 						&-description {
@@ -1866,18 +1844,92 @@ main {
 			&-hook {
 				height: 80%;
 			}
-
-			&-nav {
+			
+			&-burger {
+				width: 50px;
+				padding: 10px;
+				background-color: transparent;
+				border: none;
 				display: flex;
 				flex-direction: column;
-				justify-content: flex-end;
 
-				&-link {
-					width: max-content;
-					align-self: flex-end;
-					margin-left: 0;
-					margin: 2px 0;
-					padding: 8px;
+				&:hover {
+					cursor: pointer;
+				}
+
+				span {
+					display: block;
+					width: 100%;
+					height: 4px;
+					background-color: white;
+					border-radius: 20px;
+
+					&:nth-child(1) {
+						margin-bottom: 10px;
+					}
+
+					&:nth-child(3) {
+						margin-top: 10px;
+					}
+
+				}
+			}
+
+			&-nav {
+				&--large {
+					display: none;
+				}
+				&--small {
+					box-shadow: 0 15px 15px #0000000a;
+					display: block;
+					height: 100vh;
+					width: 50vw;
+					background-color: white;
+					z-index: 20;
+					position: fixed;
+					top: 0;
+					right: 0;
+					transform: translateX(100%);
+					transition: $transition;
+	
+					&-items {
+						display: flex;
+						flex-direction: column;
+					}
+	
+					&-link {
+						margin-left: 0;
+						padding: 30px;
+						font-size: 24px;
+						text-decoration: none;
+						color: $blue;
+						&:hover {
+							color: $blue;
+						}
+	
+						&-close-button {
+							border: none;
+							background-color: transparent;
+							font-size: 40px !important;
+							align-self: flex-end;
+							margin-bottom: 0;
+	
+							&:hover {
+								cursor: pointer;
+							}
+						}
+	
+						&--outlined {
+							margin: 0 20px;
+							text-align: center;
+						}
+					}
+					&.is-opened {
+						transform: translateX(0%);
+					}
+					&.is-closed {
+						transform: translateX(100%);
+					}
 				}
 			}
 		}
@@ -1903,12 +1955,11 @@ main {
 
 	.intro {
 		.container {
-			justify-content: space-between;
+
 		}
 
 		&-insights {
 			align-items: center;
-			width: 80%;
 			margin: 0 auto;
 			padding-bottom: 20px;
 			border-right: none;
@@ -2083,7 +2134,7 @@ main {
 			}
 		}
 	}
-}
+}	
 
 @media screen and (max-width: 576px) {
 	.container {
@@ -2094,6 +2145,11 @@ main {
 		&-navbar {
 			&-hook {
 				height: 60%;
+			}
+			&-nav {
+				&--small {
+					width: 70vw;
+				}
 			}
 		}
 
@@ -2125,11 +2181,14 @@ main {
 		padding: 0px 0px 300px;
 
 		&-text {
+			text-align: center;
 			width: 100%;
 		}
 
 		&-img {
-			width: 100%;
+			width: 60%;
+			margin-left: auto;
+			margin-right: auto;
 		}
 	}
 
@@ -2187,11 +2246,26 @@ main {
 
 			&-items {
 				&-item {
+					align-items: center;
+					justify-content: center;
+					height: 500px;
 					padding: 30px;
 
 					&-figcaption {
 						padding: 0;
 						padding-bottom: 20px;
+						&-name {
+							font: normal small-caps 600 1.6rem $font-family;
+						}
+					}
+					&-img {
+						display: none;
+					}
+					&.active,
+					&.carousel-item-start,
+					&.carousel-item-end {
+						align-items: center;
+						justify-content: center;
 					}
 				}
 			}
@@ -2209,7 +2283,20 @@ main {
 	}
 
 	.info {
+		&-text {
+			&-form {
+				justify-content: center;
+				&-disclaimer {
+					text-align: center;
+					width: 100%;
+				}
+				&-submit {
+					width: 50%;
+				}
+			}
+		}
 		&-icon {
+			display: none;
 			width: 40%;
 		}
 	}
@@ -2273,6 +2360,8 @@ main {
 			}
 
 			&-form {
+				width: 100%;
+				padding: 20px 10px;
 				&-heading {
 					text-align: center;
 				}
@@ -2420,10 +2509,29 @@ main {
 }
 
 @media screen and (max-width: 400px) {
+	.intro {
+		&-insights {
+			&-insight {
+				width: 250px;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
 	.ceo {
 		&-figure {
 			&-img {
 				width: 100%;
+			}
+		}
+	}
+	.brokers {
+		&-box {
+			&-items {
+				&-item {
+					display: none;
+					height: 600px;
+				}
 			}
 		}
 	}
@@ -2452,18 +2560,37 @@ main {
 		&.i-0 {
 			.intro-insights-insight.e-0 {
 				transform: translateX(5px);
+				& > .intro-insights-insight-marker {
+					transform: translateX(-5px);
+				}
 			}
 		}
 
 		&.i-1 {
 			.intro-insights-insight.e-1 {
 				transform: translateX(5px);
+				& > .intro-insights-insight-marker {
+					transform: translateX(-5px);
+				}
 			}
 		}
 
 		&.i-2 {
 			.intro-insights-insight.e-2 {
 				transform: translateX(5px);
+				& > .intro-insights-insight-marker {
+					transform: translateX(-5px);
+				}
+			}
+		}
+		&-insights {
+			&-insight {
+				width: 200px;
+				&-heading {
+					position: relative;
+					background-color: inherit;
+					z-index: 2;
+				}
 			}
 		}
 	}

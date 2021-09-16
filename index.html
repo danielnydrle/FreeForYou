@@ -43,10 +43,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<a href="#" class="header-navbar-hook">
 				<img src="./assets/ffy_logo_white.svg" alt="FREE for YOU" class="header-navbar-hook-img">
 			</a>
-			<nav class="header-navbar-nav">
-				<a href="#brokers" class="header-navbar-nav-link">Reference</a>
-				<a href="#signup" class="header-navbar-nav-link">Registrace</a>
-				<a href="#contact" class="header-navbar-nav-link">Kontakt</a>
+			<nav class="header-navbar-nav--large">
+				<a href="#brokers" class="header-navbar-nav--large-link">Reference</a>
+				<a href="#signup" class="header-navbar-nav--large-link">Registrace</a>
+				<a href="#contact" class="header-navbar-nav--large-link">Kontakt</a>
+			</nav>
+			<button class="header-navbar-burger" onclick="openNav()">
+				<span></span><span></span><span></span>
+			</button>
+			<nav class="header-navbar-nav--small is-closed">
+				<div class="header-navbar-nav--small-items">
+					<button
+						class="header-navbar-link header-navbar-nav--small-link header-navbar-nav--small-link-close-button"
+						onclick="closeNav()">&times;
+					</button>
+					<a href="#brokers" class="header-navbar-nav--small-link">Reference</a>
+					<a href="#signup" class="header-navbar-nav--small-link">Registrace</a>
+					<a href="#contact" class="header-navbar-nav--small-link">Kontakt</a>
+				</div>
 			</nav>
 		</div>
 		<div class="header-content container">
@@ -67,18 +81,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="intro-insights">
 					<div class="intro-insights-insight e-0">
 						<span class="intro-insights-insight-heading e-0">PŘEPIS BEZ STAROSTÍ</span>
-						<div class="intro-insights-insight-container e-0"><span
-								class="intro-insights-insight-container-icon fas fa-pen fa-fw e-0"></span></div>
+						<div class="intro-insights-insight-line"></div>
+						<div class="intro-insights-insight-marker"></div>
 					</div>
 					<div class="intro-insights-insight e-1">
 						<span class="intro-insights-insight-heading e-1">PRAVIDELNÁ ODMĚNA</span>
-						<div class="intro-insights-insight-container e-1"><span
-								class="intro-insights-insight-container-icon far fa-star fa-fw e-1"></span></div>
+						<div class="intro-insights-insight-line"></div>
+						<div class="intro-insights-insight-marker"></div>
 					</div>
 					<div class="intro-insights-insight e-2">
 						<span class="intro-insights-insight-heading e-2">ÚSPORA PRO KLIENTA</span>
-						<div class="intro-insights-insight-container e-2"><span
-								class="intro-insights-insight-container-icon fas fa-dollar-sign fa-fw e-2"></span></div>
+						<div class="intro-insights-insight-line"></div>
+						<div class="intro-insights-insight-marker"></div>
 					</div>
 				</div>
 				<span class="intro-text"></span>
@@ -90,8 +104,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<img src="./assets/Lukas-zach.jpeg" alt="Bc. Lukáš Zach, jednatel FREE for YOU."
 					class="ceo-figure-img" loading="lazy" height="400" width="400">
 				<figcaption class="ceo-figure-text">
-					<blockquote class="ceo-figure-text-quote">KONEČNĚ MŮŽU VYTĚŽIT Z PRODEJE NEMOVITOSTÍ MAXIMUM</blockquote>
-					<blockquote class="ceo-figure-text-subquote">Dodatečné služby pro klienty mi pomáhají vystoupit z řady obyčejných realitních makléřů a vytvořit dlouhodobý obchodní potenciál.</blockquote>
+					<blockquote class="ceo-figure-text-quote">MAKLÉŘI SI BUDUJÍ ZAJÍMAVÝ PASIVNÍ PŘÍJEM V ŘÁDU DESÍTEK TISÍC KORUN!</blockquote>
+					<blockquote class="ceo-figure-text-subquote">Zjednodušte si svou práci, poskytujte nejlepší služby pro své klienty a získejte dlouhodobý pasivní příjem.</blockquote>
 					<cite class="ceo-figure-text-author">
 						<b class="ceo-figure-text-author-name">Bc. Lukáš Zach</b>
 						<span class="ceo-figure-text-author-position">Jednatel FREE for YOU, s.&nbsp;r.&nbsp;o.</span>
@@ -126,7 +140,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		</section>
 		<section class="brokers" id="brokers">
 			<div class="container">
-				<h2 class="brokers-heading">REALITNÍ MAKLÉŘI VYUŽÍVAJÍCÍ PŘEVOD ENERGIÍ OD FREE&nbsp;FOR&nbsp;YOU</h2>
+				<h2 class="brokers-heading">MAKLÉŘI VYUŽÍVAJÍCÍ PŘEPIS ENERGIÍ</h2>
 				<div class="brokers-box carousel slide" data-bs-ride="carousel" data-bs-interval="false">
 					<div class="brokers-box-indicators carousel-indicators">
 						<button class="brokers-box-indicators-indicator active" data-bs-target=".brokers-box" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1"></button>
@@ -225,8 +239,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="info-text">
 					<h2 class="info-text-heading">ZÍSKEJTE DALŠÍ INFORMACE</h2>
 					<span class="info-text-description">
-						Zanechte nám kontakt <br />
-						V krátkem hovoru Vám řekneme víc.
+						Zanechte nám kontakt.
 					</span>
 					<form action="" class="info-text-form">
 						<input type="tel" name="" id="" onkeyup="validateTel()" placeholder="Zadejte vaše telefonní číslo" class="info-text-form-tel">
@@ -384,19 +397,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<div class="portal-box-items carousel-inner">
 							<div class="portal-box-items-item carousel-item active">
 								<figure class="portal-box-items-item-figure">
-									<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-box-items-item-figure-img">
+									<img src="./assets/Dashboard1.jpg" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-box-items-item-figure-img">
 									<span class="portal-box-items-item-figure-description">V portálu najdete všechno potřebné od smluv po plnou moc.</span>
 								</figure>
 							</div>
 							<div class="portal-box-items-item carousel-item">
 								<figure class="portal-box-items-item-figure">
-									<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-box-items-item-figure-img">
+									<img src="./assets/Dashboard2.jpg" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-box-items-item-figure-img">
 									<span class="portal-box-items-item-figure-description">V portálu najdete všechno potřebné od smluv po plnou moc.</span>
 								</figure>
 							</div>
 							<div class="portal-box-items-item carousel-item">
 								<figure class="portal-box-items-item-figure">
-									<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-box-items-item-figure-img">
+									<img src="./assets/Dashboard3.jpg" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-box-items-item-figure-img">
 									<span class="portal-box-items-item-figure-description">V portálu najdete všechno potřebné od smluv po plnou moc.</span>
 								</figure>
 							</div>
@@ -429,16 +442,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</form>
 				</div>
 				<div class="portal-images">
-					<a href="https://via.placeholder.com/400x400" class="portal-images-figure" data-fancybox="portal">
-						<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img">
+					<a href="./assets/Dashboard1.jpg" class="portal-images-figure" data-fancybox="portal">
+						<img src="./assets/Dashboard1.jpg" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img">
 						<span class="portal-images-figure-description">V portálu ihned vidíte výši vaší odměny</span>
 					</a>
-					<a href="https://via.placeholder.com/400x400" class="portal-images-figure" data-fancybox="portal">
-						<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img">
+					<a href="./assets/Dashboard2.jpg" class="portal-images-figure" data-fancybox="portal">
+						<img src="./assets/Dashboard2.jpg" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img">
 						<span class="portal-images-figure-description">Aktuální stav přepisu odběrného místa</span>
 					</a>
-					<a href="https://via.placeholder.com/400x400" class="portal-images-figure" data-fancybox="portal">
-						<img src="https://via.placeholder.com/400x400" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img">
+					<a href="./assets/Dashboard3.jpg" class="portal-images-figure" data-fancybox="portal">
+						<img src="./assets/Dashboard3.jpg" alt="V portálu najdete všechno potřebné od smluv po plnou moc." class="portal-images-figure-img">
 						<span class="portal-images-figure-description">Jednoduché přidání nového odběrného místa</span>
 					</a>
 				</div>
@@ -525,7 +538,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0.0-beta.4/dist/fancybox.umd.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="./scripts/letterize.min.js"></script>
-	<script src="./scripts/map.js"></script>
 	<script src="./scripts/script.js"></script>
 	<script src="https://kit.fontawesome.com/5877601269.js" crossorigin="anonymous"></script>
 </body>

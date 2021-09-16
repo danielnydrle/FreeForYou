@@ -8,6 +8,8 @@ const html = document.querySelector("html");
 const introElement = document.querySelector(".intro");
 const introInsightsElement = document.querySelector(".intro-insights");
 const introInsightsList = document.querySelectorAll(".intro-insights-insight");
+const introInsightsMarkers = document.querySelectorAll(".intro-insights-insight-marker");
+const introInsightsLines = document.querySelectorAll(".intro-insights-insight-line");
 const introText = document.querySelector(".intro-text");
 const introImg = document.querySelector(".intro-img");
 const introTexts = [
@@ -41,25 +43,6 @@ const modalBS = new bootstrap.Modal(modal);
 
 var letterize;
 
-window.onload = () => {
-	introChange();
-	manipulateElements();
-	validateEmail();
-	loadCaptions();
-	showModal();
-	numbersInView();
-}
-
-window.onresize = () => {
-	manipulateElements();
-}
-
-introInsightsList.forEach(e => {
-	e.addEventListener("click", (e) => {
-		introChange(e.target);
-	})
-})
-
 const introChange = (e) => {
 	let introHeading;
 	let index;
@@ -89,8 +72,25 @@ const introChange = (e) => {
 	introImg.setAttribute("alt", introHeading)
 
 	introText.innerHTML = introTexts[introPosition];
-
 }
+
+introInsightsList.forEach(e => {
+	e.addEventListener("click", (e) => {
+		introChange(e.target);
+	})
+})
+
+introInsightsMarkers.forEach(e => {
+	e.addEventListener("click", (e) => {
+		introChange(e.target.parentElement)
+	})
+})
+
+introInsightsLines.forEach(e => {
+	e.addEventListener("click", (e) => {
+		introChange(e.target.parentElement)
+	})
+})
 
 const animateNumbers = () => {
 	$('.counting').each(function () {
@@ -212,4 +212,33 @@ const hideModal = () => {
 	isModalVisible = false;
 	html.style.overflowY = "scroll";
 	numbersInView();
+}
+
+window.onload = () => {
+	introChange();
+	manipulateElements();
+	validateEmail();
+	loadCaptions();
+	showModal();
+	numbersInView();
+}
+
+window.onresize = () => {
+	manipulateElements();
+}
+
+//burger
+const mobileNav = document.querySelector(".header-navbar-nav--small");
+let isNavOpen = false;
+
+openNav = () => {
+    mobileNav.classList.remove("is-closed");
+    mobileNav.classList.add("is-opened");
+	isNavOpen = true;
+}
+
+closeNav = () => {
+    mobileNav.classList.remove("is-opened");
+    mobileNav.classList.add("is-closed");
+	isNavOpen = false;
 }
