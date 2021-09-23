@@ -242,3 +242,46 @@ closeNav = () => {
     mobileNav.classList.add("is-closed");
 	isNavOpen = false;
 }
+
+$(".js-mailform").submit(function(e) {
+	e.preventDefault();
+	$t = $(this);
+	$t.addClass("is-loading");
+	$.ajax({
+		type: 'POST',
+		url: '/forms.php',
+		data: { type: 'mail', val: $(".js-mail").val() },
+		success: function() {
+			alert('Děkujeme za odeslání')
+		},
+		error: function() {
+			alert('Chyba')
+		},
+		complete: function() {
+			$t.removeClass("is-loading")
+		}
+
+	})
+
+})
+
+$(".js-telform").submit(function (e) {
+	e.preventDefault();
+	$t = $(this);
+	$t.addClass("is-loading");
+	$.ajax({
+		type: 'POST',
+		url: '/forms.php',
+		data: { type: 'tel', val: $(".js-tel").val() },
+		success: function () {
+			alert('Děkujeme za odeslání')
+		},
+		error: function () {
+			alert('Chyba')
+		},
+		complete: function () {
+			$t.removeClass("is-loading")
+		}
+	})
+
+})
