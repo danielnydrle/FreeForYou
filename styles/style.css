@@ -675,6 +675,7 @@ main {
   flex-direction: column;
   align-items: center;
   background-color: #4E758Aaa;
+  box-shadow: 0 0 0 1px #4E758Aaa;
   color: white;
   border-radius: 10px;
   overflow: hidden;
@@ -1808,7 +1809,11 @@ main {
   .brokers-box-control-next {
     display: none;
   }
-
+  .brokers-box-indicators {
+    flex-wrap: wrap;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
   .info-text-form {
     justify-content: center;
   }
@@ -1936,6 +1941,9 @@ main {
   .footer-img {
     width: 50%;
     bottom: 370px;
+  }
+  .footer-contact-heading {
+    margin: 30px 0;
   }
   .footer-location {
     flex-direction: column;

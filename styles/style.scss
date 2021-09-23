@@ -870,6 +870,7 @@ main {
 			flex-direction: column;
 			align-items: center;
 			background-color: #{$blue}aa;
+			box-shadow: 0 0 0 1px #{$blue}aa;
 			color: white;
 			border-radius: 10px;
 			overflow: hidden;
@@ -2279,6 +2280,14 @@ main {
 					display: none;
 				}
 			}
+
+			&-indicators {
+				flex-wrap: wrap;
+				margin-left: 20px;
+				margin-right: 20px;
+				&-indicator {
+				}
+			}
 		}
 	}
 
@@ -2463,6 +2472,12 @@ main {
 		&-img {
 			width: 50%;
 			bottom: 370px;
+		}
+
+		&-contact {
+			&-heading {
+				margin: 30px 0;
+			}
 		}
 
 		&-location {
