@@ -202,12 +202,14 @@ const loadCaptions = () => {
 }
 
 const showModal = () => {
+	if (localStorage.isModalClosed) return;
 	modalBS.show();
 	isModalVisible = true;
 	html.style.overflowY = "hidden";
 }
 
 const hideModal = () => {
+	localStorage.setItem("isModalClosed", "1");
 	modalBS.hide();
 	isModalVisible = false;
 	html.style.overflowY = "scroll";
@@ -252,7 +254,7 @@ $(".js-mailform").submit(function(e) {
 		url: '/forms.php',
 		data: { type: 'mail', val: $(".js-mail").val() },
 		success: function() {
-			alert('Děkujeme za odeslání')
+			alert('Děkujeme za odeslání. Brzy Vás budeme kontaktovat.')
 		},
 		error: function() {
 			alert('Chyba')
@@ -274,7 +276,7 @@ $(".js-telform").submit(function (e) {
 		url: '/forms.php',
 		data: { type: 'tel', val: $(".js-tel").val() },
 		success: function () {
-			alert('Děkujeme za odeslání')
+			alert('Děkujeme za odeslání. Brzy Vás budeme kontaktovat.')
 		},
 		error: function () {
 			alert('Chyba')
