@@ -541,23 +541,9 @@ main {
 }
 .info-text-form-disclaimer-link {
   color: #ECF6FE;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease-in-out;
 }
 .info-text-form-disclaimer-link:hover {
   color: #ECF6FE;
-}
-.info-text-form-disclaimer-link::after {
-  display: block;
-  content: "";
-  border-bottom: 1px solid #ECF6FE;
-  transform: scaleX(0);
-  transition: all 0.3s ease-in-out;
-}
-.info-text-form-disclaimer-link:hover::after {
-  transform: scaleX(1);
-  border-bottom: 1px solid #ECF6FE;
 }
 .info-icon {
   width: 30%;
@@ -782,23 +768,9 @@ main {
 }
 .example-text-disclaimer-link {
   color: #333333;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease-in-out;
 }
 .example-text-disclaimer-link:hover {
-  color: #4E758A;
-}
-.example-text-disclaimer-link::after {
-  display: block;
-  content: "";
-  border-bottom: 1px solid #4E758A;
-  transform: scaleX(0);
-  transition: all 0.3s ease-in-out;
-}
-.example-text-disclaimer-link:hover::after {
-  transform: scaleX(1);
-  border-bottom: 1px solid #4E758A;
+  color: #333333;
 }
 .example-icon {
   width: 30%;

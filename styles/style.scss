@@ -702,9 +702,9 @@ main {
 				color: white;
 				&-link {
 					color: $blue-semilight;
-					text-decoration: none;
-					@include linkUnderline($blue-semilight);
-					@include transition();
+					&:hover {
+						color: $blue-semilight;
+					}
 				}
 			}
 		}
@@ -964,9 +964,9 @@ main {
 			font: normal normal 300 0.7rem $font-family;
 			&-link {
 				color: $gray-dark;
-				text-decoration: none;
-				@include linkUnderline($blue);
-				@include transition();
+				&:hover {
+					color: $gray-dark;
+				}
 			}
 		}
 	}
