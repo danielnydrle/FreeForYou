@@ -202,7 +202,7 @@ const loadCaptions = () => {
 }
 
 const showModal = () => {
-	if (localStorage.isModalClosed) return;
+	if (localStorage.isModalClosed || location.hash == '#enter') return;
 	modalBS.show();
 	isModalVisible = true;
 	html.style.overflowY = "hidden";

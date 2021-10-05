@@ -47,7 +47,7 @@ function pushContact($tkn, $type, $val) {
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
 		'contact' => $val,
 		'type' => $type,
-		'webpage' => 'ffy_landing'
+		'webpage' => 'Makleri - web'
 	]));
 
 	curl_setopt($ch, CURLOPT_URL, "https://portal.freeforyou.cz/api/v1/ffy/lead");
