@@ -22,7 +22,7 @@ function getToken() {
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_POST, 0);
-	curl_setopt($ch, CURLOPT_URL, "http://testweb-portal.freeforyou.cz/api/v1/ffy/login?username=WEB&password=heslo123");
+	curl_setopt($ch, CURLOPT_URL, "https://portal.freeforyou.cz/api/v1/ffy/login?username=WEB&password=123456789");
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
@@ -47,10 +47,10 @@ function pushContact($tkn, $type, $val) {
 	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
 		'contact' => $val,
 		'type' => $type,
-		'webpage' => 'test'
+		'webpage' => 'ffy_landing'
 	]));
 
-	curl_setopt($ch, CURLOPT_URL, "http://testweb-portal.freeforyou.cz/api/v1/ffy/lead");
+	curl_setopt($ch, CURLOPT_URL, "https://portal.freeforyou.cz/api/v1/ffy/lead");
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
